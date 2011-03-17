@@ -1,0 +1,61 @@
+It's hot and dusty here.
+The ground is cracked and hard.
+But if I go a little further...
+it might get a little better. 
+
+
+There's still a long way to go.
+I'm sure I should keep going.
+If I quit now, that would be lame.
+
+I need water.
+
+I keep finding stuff.
+Some of it is pretty heavy.
+
+There's someone waiting for me.
+At least, I think so.
+
+It's a party. 
+I remember now.
+I'm going to a party.
+I don't want to arrive empty handed.
+
+
+
+## Energy below half
+My knees hurt.
+I should drink some water.
+
+
+
+## Energy below 25%
+I'm not feeling very well.
+This is hard.
+
+
+## About to die
+I can see the balloons.
+
+
+## Saw an item
+Up ahead I see a __
+There's a __ on the path up ahead.
+
+
+## got an item
+I pick up the __
+
+
+## Pack full, passed up an item
+I don't have room.
+
+
+## Items
+
+### water 
+
+It's refreshing. I can go further.
+
+
+### 
