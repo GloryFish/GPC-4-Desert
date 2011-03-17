@@ -9,10 +9,10 @@
 require 'middleclass'
 require 'middleclass-extras'
 
+require 'gamestate'
 require 'logger'
 
 function love.load()
-  
   -- Seed random
   local seed = os.time()
   math.randomseed(seed);
