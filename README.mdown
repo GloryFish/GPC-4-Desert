@@ -1,0 +1,40 @@
+# The Desert
+
+A man walks along the desert carrying a heavy burden. The sun beats down. Where is going? Where is he coming from?
+
+Gameplay:
+
+animated pixel dude walks from left to right.
+
+There is a day/night cycle.
+
+As he walks objects appear.
+
+On screen is an inventory grid similar to Diablo. Player can put found items into the grid. 
+
+Items have weight. The more items carried the slower the player moves, the more energy he expends.
+
+Player has an energy meter. If it runs out, player collapses, GAME OVER
+
+Player can choose to DROP or USE an item.
+
+Dropping an item reduces weight. Using an item has an effect.
+
+Items:
+
+
+WATER
+FOOD
+SHOES
+MONEY
+PHOTO
+BIG ROCK
+LOG
+TUMBLEWEED
+CACTUS
+GUN
+...
+
+Colors
+
+Brown, grey, red.
