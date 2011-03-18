@@ -10,35 +10,27 @@ require 'middleclass'
 require 'middleclass-extras'
 
 require 'gamestate'
+require 'scene_menu'
 require 'logger'
 
 function love.load()
+  love.graphics.setCaption('Unrequited by Jay Roberts')
+
   -- Seed random
   local seed = os.time()
   math.randomseed(seed);
-  math.random(); math.random(); math.random()
-  
-  log = Logger(vector(5, 5))
-end
+  math.random(); math.random(); math.random()  
 
-function love.keypressed(key, unicode)
-  if key == 'escape' then
-    love.event.push('q')
-  end
-end
+  fonts = {
+    default = love.graphics.newFont('resources/fonts/silkscreen.ttf', 24),
+    large =  love.graphics.newFont('resources/fonts/silkscreen.ttf', 48)
+  }
 
-function love.mousepressed(x, y, button)
-end
+  music = {}
 
-function love.mousereleased(x, y, button)
+  Gamestate.registerEvents()
+  Gamestate.switch(menu)
 end
-
 
 function love.update(dt)
-  log:update(dt)
-end
-
-function love.draw()
-  log:draw()
-  
 end
