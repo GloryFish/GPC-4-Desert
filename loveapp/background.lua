@@ -40,22 +40,25 @@ function Background:draw()
   -- Draw day sky
   local skyAlpha = 0
   
-  if self.time >= 0 and self.time < 0.25 then -- Morning to Noon
-    skyAlpha = (self.time / 0.25) * 1.7
+  if self.time >= 0 and self.time < 0.5 then -- Day
+    skyAlpha = 1
+  end
+  
+  
+  if self.time >= 0.5 and self.time < 0.75 then
+    skyAlpha = ((self.time - 0.5) / 0.25) * 1.7
     if skyAlpha > 1 then
       skyAlpha = 1
     end
+    skyAlpha = 1 - skyAlpha
   end 
 
-  if self.time >= 0.25 and self.time < 0.5 then -- Noon to night
-    skyAlpha = 1.7 - ( (self.time - 0.25) / 0.25) * 1.7
+  if self.time >= 0.75 and self.time <= 1 then
+    skyAlpha = 1.7 - ( (self.time - 0.75) / 0.25) * 1.7
     if skyAlpha > 1 then
       skyAlpha = 1
     end
-  end 
-
-  if self.time >= 0.5 and self.time <= 1 then -- Night
-    skyAlpha = 0
+    skyAlpha = 1 - skyAlpha
   end 
   
   love.graphics.setColor(colors.skyblue.r,
