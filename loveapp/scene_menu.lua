@@ -13,6 +13,7 @@ require 'textfader'
 require 'colors'
 
 require 'script'
+require 'scene_game'
 
 menu = Gamestate.new()
 menu.level = ''
@@ -44,10 +45,18 @@ function menu.update(self, dt)
   menu.log:update(dt)
   menu.log:addLine(string.format('Period: %i', menu.period))
   menu.log:addLine(string.format('Time: %f', time))
+  menu.log:addLine(string.format('Elapsed: %i', self.elapsed))
   
   menu.background:update(dt, time)
   
   menu.textfader:update(dt)
+  
+  
+  if self.elapsed > 127 then
+    game.elapsed = self.elapsed
+    game.background = self.background
+    Gamestate.switch(game)
+  end
 end
 
 function menu.draw(self)
@@ -57,4 +66,5 @@ function menu.draw(self)
 end
 
 function menu.leave(self)
+  self.log = nil
 end
