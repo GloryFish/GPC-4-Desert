@@ -18,7 +18,7 @@ function menu.enter(self, pre)
   menu.elapsed = 0
   
   menu.log = Logger(vector(20, 20))
-  menu.period = 10
+  menu.period = 15
 end
 
 function menu.update(self, dt)

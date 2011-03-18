@@ -20,8 +20,8 @@ function Background:initialize(pos)
   self.moon:setFilter('nearest', 'nearest')
   
   self.system = {
-    center = vector(300, 300),
-    radius = 200
+    center = vector(love.graphics.getWidth() / 2, 400),
+    radius = 370
   }
   
   self.time = 0
@@ -38,29 +38,39 @@ function Background:draw()
   
   
   -- Draw day sky
+  local skyAlpha = 0
+  
+  if self.time >= 0 and self.time < 0.25 then -- Morning to Noon
+    skyAlpha = (self.time / 0.25) * 1.7
+    if skyAlpha > 1 then
+      skyAlpha = 1
+    end
+  end 
+
+  if self.time >= 0.25 and self.time < 0.5 then -- Noon to night
+    skyAlpha = 1.7 - ( (self.time - 0.25) / 0.25) * 1.7
+    if skyAlpha > 1 then
+      skyAlpha = 1
+    end
+  end 
+
+  if self.time >= 0.5 and self.time <= 1 then -- Night
+    skyAlpha = 0
+  end 
+  
   love.graphics.setColor(colors.skyblue.r,
                          colors.skyblue.g,
                          colors.skyblue.b,
-                         self.time * 255)
+                         skyAlpha * 255)
   love.graphics.rectangle('fill', 0, 0, love.graphics.getWidth(), love.graphics.getHeight() - 150)
   
-  
-  -- Draw ground
-  love.graphics.setColor(colors.brown.r,
-                         colors.brown.g,
-                         colors.brown.b,
-                         colors.brown.a)
-  love.graphics.rectangle('fill', 0, love.graphics.getHeight() - 150, love.graphics.getWidth(), 150)
-
-
+  -- Draw celestial system
   local sunPos = vector(self.system.center.x + math.cos(self.time * 2 * math.pi + math.pi) * self.system.radius,
                         self.system.center.y + math.sin(self.time * 2 * math.pi + math.pi) * self.system.radius) 
 
   local moonPos = vector(self.system.center.x + math.cos(self.time * 2 * math.pi) * self.system.radius,
                          self.system.center.y + math.sin(self.time * 2 *math.pi) * self.system.radius) 
-
   
-  -- Draw celestial system
   love.graphics.setColor(colors.white.r,
                          colors.white.g,
                          colors.white.b,
@@ -71,12 +81,12 @@ function Background:draw()
   -- Draw moon
   love.graphics.draw(self.moon, moonPos.x, moonPos.y, 0, 4, 4, 16, 16)
 
-  love.graphics.setColor(colors.red.r,
-                         colors.red.g,
-                         colors.red.b,
-                         colors.red.a)
-  love.graphics.circle('line', self.system.center.x, self.system.center.y, 15, 15)
-
+  -- Draw ground
+  love.graphics.setColor(colors.brown.r,
+                         colors.brown.g,
+                         colors.brown.b,
+                         colors.brown.a)
+  love.graphics.rectangle('fill', 0, love.graphics.getHeight() - 150, love.graphics.getWidth(), 150)
 
 end
 
