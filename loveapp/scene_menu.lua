@@ -9,16 +9,32 @@
 require 'logger'
 require 'vector'
 require 'background'
+require 'textfader'
+require 'colors'
+
+require 'script'
 
 menu = Gamestate.new()
 menu.level = ''
 
 function menu.enter(self, pre)
   menu.background = Background()
-  menu.elapsed = 0
+  menu.elapsed = 110
   
   menu.log = Logger(vector(20, 20))
-  menu.period = 15
+  menu.period = 120
+  
+  menu.textfader = TextFader(vector(love.graphics.getWidth() / 2, 400), fonts.default, colors.white)
+  
+  for i, line in ipairs(script.intro) do
+    menu.textfader:addLine(line)
+  end
+end
+
+function menu.keypressed(self, key, unicode)
+  if key == 'escape' then
+    love.event.push('q')
+  end
 end
 
 function menu.update(self, dt)
@@ -30,10 +46,13 @@ function menu.update(self, dt)
   menu.log:addLine(string.format('Time: %f', time))
   
   menu.background:update(dt, time)
+  
+  menu.textfader:update(dt)
 end
 
 function menu.draw(self)
   menu.background:draw()
+  menu.textfader:draw()
   menu.log:draw()
 end
 
