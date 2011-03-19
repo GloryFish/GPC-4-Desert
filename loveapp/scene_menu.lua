@@ -18,6 +18,7 @@ require 'man'
 
 require 'script'
 require 'scene_game'
+require 'scene_itemviewer'
 
 menu = Gamestate.new()
 menu.level = ''
@@ -58,6 +59,10 @@ function menu.mousepressed(self, x, y, button)
   if menu.endButton ~= nil then
     menu.endButton:mousepressed(vector(x, y))
   end
+
+  if menu.itemButton ~= nil then
+    menu.itemButton:mousepressed(vector(x, y))
+  end
 end
 
 function menu.mousereleased(self, x, y, button)
@@ -66,6 +71,9 @@ function menu.mousereleased(self, x, y, button)
   end
   if menu.endButton ~= nil then
     menu.endButton:mousereleased(vector(x, y))
+  end
+  if menu.itemButton ~= nil then
+    menu.itemButton:mousereleased(vector(x, y))
   end
 end
 
@@ -96,6 +104,9 @@ function menu.addButtons()
 
   menu.endButton = TextButton(vector(love.graphics.getWidth() / 2, 245), 'END')
   menu.endButton.action = menu.endGame
+
+  menu.itemButton = TextButton(vector(love.graphics.getWidth() / 2, 290), 'ITEMS')
+  menu.itemButton.action = menu.showItemviewer
   
   menu.fader.state = nil
   menu.fader.opacity = 0
@@ -111,6 +122,10 @@ function menu.endGame()
   love.event.push('q')
 end
 
+function menu.showItemviewer()
+  Gamestate.switch(itemviewer)
+end
+
 function menu.draw(self)
   menu.background:draw()
   menu.man:draw()
@@ -118,6 +133,7 @@ function menu.draw(self)
   if menu.startButton ~= nil then
     menu.startButton:draw()
     menu.endButton:draw()
+    menu.itemButton:draw()
   end
   
   menu.textfader:draw()
