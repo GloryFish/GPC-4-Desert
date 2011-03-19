@@ -6,53 +6,37 @@
 --  Copyright 2011 GloryFish.org. All rights reserved.
 -- 
 
+require 'middleclass'
+
+Color = class('Color')
+
+function Color:initialize(r, g, b, a)
+  self.r = tonumber(r) or 0
+  self.g = tonumber(g) or 0
+  self.b = tonumber(b) or 0
+  self.a = tonumber(a) or 255
+end
+
+function Color:set()
+	love.graphics.setColor(self.r,self.g,self.b,self.a)
+end
+
+function Color:grayscale()
+	local a = (self.r + self.g + self.b) / 3
+	return Color(a, a, a, self.a)
+end
+
+function Color:inverse()
+	return Color(255 - self.r, 255 - self.g, 255 - self.b, 255 - self.a)
+end
+
 colors = {
-  red = {
-    r = 255,
-    g = 0,
-    b = 0,
-    a = 255
-  },
-  green = {
-    r = 0,
-    g = 255,
-    b = 0,
-    a = 255
-  },
-  blue = {
-    r = 0,
-    g = 0,
-    b = 255,
-    a = 255
-  },
-  skyblue = {
-    r = 58,
-    g = 88,
-    b = 135,
-    a = 255
-  },
-  white = {
-    r = 255,
-    g = 255,
-    b = 255,
-    a = 255
-  },
-  black = {
-    r = 0,
-    g = 0,
-    b = 0,
-    a = 255
-  },
-  brown = {
-    r = 135,
-    g = 113,
-    b = 58,
-    a = 255
-  },
-  clear = {
-    r = 0,
-    g = 0,
-    b = 0,
-    a = 0
-  }
+  red = Color(255, 0, 0),
+  green = Color(0, 255, 0),
+  blue = Color(0, 0, 255),
+  skyblue = Color(58, 88, 135),
+  white = Color(255, 255, 255),
+  black = Color(0, 0, 0),
+  brown = Color(135, 113, 58),
+  clear = Color(0, 0, 0, 0)
 }

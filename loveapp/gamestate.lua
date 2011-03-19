@@ -77,6 +77,12 @@ function Gamestate.keyreleased(key)
 	Gamestate.current:keyreleased(key)
 end
 
+local _mousepressed
+function Gamestate.mousepressed(x,y,btn)
+	if _mousepressed then _mousepressed(x,y,btn) end
+	Gamestate.current:mousepressed(x,y,btn)
+end
+
 local _mousereleased
 function Gamestate.mousereleased(x,y,btn)
 	if _mousereleased then _mousereleased(x,y,btn) end
@@ -96,6 +102,8 @@ function Gamestate.registerEvents()
 	love.keypressed    = Gamestate.keypressed
 	_keyreleased       = love.keyreleased
 	love.keyreleased   = Gamestate.keyreleased
+	_mousepressed      = love.mousepressed
+	love.mousepressed  = Gamestate.mousepressed
 	_mousereleased     = love.mousereleased
 	love.mousereleased = Gamestate.mousereleased
 	_draw              = love.draw

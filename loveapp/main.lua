@@ -10,7 +10,7 @@ require 'middleclass'
 require 'middleclass-extras'
 
 require 'gamestate'
-require 'scene_menu'
+require 'scene_intro'
 require 'logger'
 
 function love.load()
@@ -22,14 +22,15 @@ function love.load()
   math.random(); math.random(); math.random()  
 
   fonts = {
-    default = love.graphics.newFont('resources/fonts/silkscreen.ttf', 24),
-    large =  love.graphics.newFont('resources/fonts/silkscreen.ttf', 48)
+    default        = love.graphics.newFont('resources/fonts/silkscreen.ttf', 24),
+    button         = love.graphics.newFont('resources/fonts/silkscreen.ttf', 48),
+    buttonSelected = love.graphics.newFont('resources/fonts/silkscreen.ttf', 52)
   }
 
   music = {}
 
   Gamestate.registerEvents()
-  Gamestate.switch(menu)
+  Gamestate.switch(intro)
 end
 
 function love.update(dt)
