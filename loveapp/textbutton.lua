@@ -12,8 +12,8 @@ require 'colors'
 
 TextButton = class('TextButton')
 
-function TextButton:initialize(pos, text)
-  self.position = pos
+function TextButton:initialize(text)
+  self.position = vector(0, 0)
   self.text = text
   self.color = colors.white
   self.font = fonts.button

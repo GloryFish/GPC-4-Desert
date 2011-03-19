@@ -11,17 +11,22 @@ Menu = class('Menu')
 function Menu:initialize(pos)
   self.position = pos
   self.buttons = {}
+  self.visible = true
 end
 
 function Menu:mousepressed(pos)
-  for i, button in ipairs(self.buttons) do
-    button:mousepressed(pos)
+  if self.visible then
+    for i, button in ipairs(self.buttons) do
+      button:mousepressed(pos)
+    end
   end
 end
 
 function Menu:mousereleased(pos)
-  for i, button in ipairs(self.buttons) do
-    button:mousereleased(pos)
+  if self.visible then
+    for i, button in ipairs(self.buttons) do
+      button:mousereleased(pos)
+    end
   end
 end
 
@@ -39,7 +44,9 @@ function Menu:layoutButtons()
 end
 
 function Menu:draw()
-  for i, button in ipairs(buttons) do
-    button:draw()
+  if self.visible then
+    for i, button in ipairs(self.buttons) do
+      button:draw()
+    end
   end
 end

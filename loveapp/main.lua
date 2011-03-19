@@ -10,7 +10,7 @@ require 'middleclass'
 require 'middleclass-extras'
 
 require 'gamestate'
-require 'scene_menu'
+require 'scene_intro'
 require 'logger'
 
 function love.load()
@@ -30,7 +30,7 @@ function love.load()
   music = {}
 
   Gamestate.registerEvents()
-  Gamestate.switch(menu)
+  Gamestate.switch(intro)
 end
 
 function love.update(dt)
