@@ -9,6 +9,7 @@
 require 'logger'
 require 'vector'
 require 'background'
+require 'fader'
 require 'textfader'
 require 'colors'
 
@@ -20,11 +21,14 @@ menu.level = ''
 
 function menu.enter(self, pre)
   menu.background = Background()
-  menu.elapsed = 110
+  menu.elapsed = 100
   
   menu.log = Logger(vector(20, 20))
   menu.period = 120
   
+  menu.fader = Fader()
+  menu.fader.maxduration = 10
+  menu.fader:fadeIn()
   menu.textfader = TextFader(vector(love.graphics.getWidth() / 2, 400), fonts.default, colors.white)
   
   for i, line in ipairs(script.intro) do
@@ -49,6 +53,7 @@ function menu.update(self, dt)
   
   menu.background:update(dt, time)
   
+  menu.fader:update(dt)
   menu.textfader:update(dt)
   
   
@@ -62,6 +67,7 @@ end
 function menu.draw(self)
   menu.background:draw()
   menu.textfader:draw()
+  menu.fader:draw()
   menu.log:draw()
 end
 

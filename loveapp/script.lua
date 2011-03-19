@@ -11,6 +11,7 @@ script = {}
 
 
 script.intro = {
+  '',
   'It\'s hot and dusty here.',
   'The ground is cracked and hard.',
   'But if I go a little further...',
