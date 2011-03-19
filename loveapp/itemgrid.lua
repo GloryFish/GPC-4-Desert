@@ -20,6 +20,7 @@ function ItemGrid:initialize()
   self.position = vector(0, 0)
   self.itemIds = {}
   self.width = 5
+  self.padding = 3
 end
 
 function ItemGrid:addItem(itemId)
@@ -38,8 +39,8 @@ function ItemGrid:draw()
     local y = math.floor((i - 1) / self.width)
     
     love.graphics.draw(items[itemId].image, 
-                       self.position.x + x * self.itemSize * self.itemScale, 
-                       self.position.y + y * self.itemSize * self.itemScale, 
+                       self.position.x + x * (self.itemSize + self.padding) * self.itemScale, 
+                       self.position.y + y * (self.itemSize + self.padding) * self.itemScale, 
                        0, 
                        self.itemScale, 
                        self.itemScale, 
