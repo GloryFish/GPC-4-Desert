@@ -8,10 +8,12 @@
 
 require 'logger'
 require 'vector'
+require 'colors'
+
 require 'background'
 require 'fader'
 require 'textfader'
-require 'colors'
+require 'man'
 
 require 'script'
 require 'scene_game'
@@ -29,7 +31,10 @@ function menu.enter(self, pre)
   menu.fader = Fader()
   menu.fader.maxduration = 10
   menu.fader:fadeIn()
+
   menu.textfader = TextFader(vector(love.graphics.getWidth() / 2, 400), fonts.default, colors.white)
+  
+  menu.man = Man(vector(love.graphics.getWidth() / 2, 450))
   
   for i, line in ipairs(script.intro) do
     menu.textfader:addLine(line)
@@ -56,7 +61,9 @@ function menu.update(self, dt)
   menu.fader:update(dt)
   menu.textfader:update(dt)
   
+  menu.man:update(dt)
   
+  -- Transition to game after intro is over
   if self.elapsed > 127 then
     game.elapsed = self.elapsed
     game.background = self.background
@@ -66,6 +73,8 @@ end
 
 function menu.draw(self)
   menu.background:draw()
+  menu.man:draw()
+  
   menu.textfader:draw()
   menu.fader:draw()
   menu.log:draw()
@@ -73,4 +82,6 @@ end
 
 function menu.leave(self)
   self.log = nil
+  self.fader = nil
+  self.textfader = nil
 end
