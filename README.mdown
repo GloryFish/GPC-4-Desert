@@ -1,24 +1,36 @@
-# The Desert
+# Desert Loot
 
-A man walks along the desert carrying a heavy burden. The sun beats down. Where is going? Where is he coming from?
+A man walks along the desert carrying a heavy burden. The sun beats down. Where is going? Where is he coming from? He seems to be collecting a lot of stuff.
 
-Gameplay:
+## Gameplay:
 
-animated pixel dude walks from left to right.
+The Man walks constantly. The sun rises and sets. Items appear and he collects them. The items fill an inventory.
 
-There is a day/night cycle.
+The player can choose to leave an item lone or perform an action on the item. Items will be consumed or dropped.
 
-As he walks objects appear.
-
-On screen is an inventory grid similar to Diablo. Player can put found items into the grid. 
+The Man has an energy meter. If it runs out, he collapses.
 
 Items have weight. The more items carried the slower the player moves, the more energy he expends.
 
-Player has an energy meter. If it runs out, player collapses, GAME OVER
+Items have value. The value is shown as a dollar amount. The player must choose to keep an item based on weight/value/usefulness.
 
-Player can choose to DROP or USE an item.
+Ex:
 
-Dropping an item reduces weight. Using an item has an effect.
+WATER has LOW value, LOW weight, high usefulness and it is COMMON
+GIANT ROCK has LOW value, HIGH weight, no usefulness, and is COMMON
+GOLD RING has HIGH VALUE, LOW weight, no usefulness and is RARE
+STURDY SHOE has MEDIUM value, LOW weight, HIHG usefulness and is UNCOMMON
+
+
+Sometimes a HAZARD appears. Having the right item in your inventory when the hazard appears will prevent energy loss from the hazard and the item will be consumed.
+
+
+Some hazards:
+
+PIT - 
+SPIKES - Protective footwear
+BIRD - Protective headwear
+
 
 Items:
 
