@@ -60,10 +60,10 @@ function TextFader:draw(dt)
   love.graphics.setColor(self.color.r,
                          self.color.g,
                          self.color.b,
-                         self.opacity * 255);
+                         self.opacity * 255)
   local lineWidth = self.font:getWidth(self.currentline)
 
   love.graphics.print(self.currentline, 
                       self.position.x - lineWidth / 2, 
-                      self.position.y);
+                      self.position.y)
 end

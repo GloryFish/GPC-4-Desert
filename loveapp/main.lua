@@ -22,8 +22,9 @@ function love.load()
   math.random(); math.random(); math.random()  
 
   fonts = {
-    default = love.graphics.newFont('resources/fonts/silkscreen.ttf', 24),
-    large =  love.graphics.newFont('resources/fonts/silkscreen.ttf', 48)
+    default        = love.graphics.newFont('resources/fonts/silkscreen.ttf', 24),
+    button         = love.graphics.newFont('resources/fonts/silkscreen.ttf', 48),
+    buttonSelected = love.graphics.newFont('resources/fonts/silkscreen.ttf', 52)
   }
 
   music = {}
