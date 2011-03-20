@@ -30,6 +30,7 @@ function intro.enter(self, pre)
   
   intro.log = Logger(vector(20, 20))
   intro.period = 120
+  intro.speed = 1
   
   intro.fader = Fader()
   intro.fader.maxduration = 10
@@ -67,10 +68,12 @@ end
 
 function intro.mousepressed(self, x, y, button)
   if intro.menu.visible ~= true then
-    intro.elapsed = 127
-    intro.fader.state = nil
-    intro.fader.opacity = 0
-    intro.menu.visible = true
+    -- intro.elapsed = 127
+    -- intro.fader.state = nil
+    -- intro.fader.opacity = 0
+    -- intro.menu.visible = true
+    
+    intro.speed = 35
   end
   
   intro.menu:mousepressed(vector(x, y))
@@ -81,6 +84,8 @@ function intro.mousereleased(self, x, y, button)
 end
 
 function intro.update(self, dt)
+  dt = dt * intro.speed
+  
   intro.elapsed = intro.elapsed + dt
   local _, time = math.modf(intro.elapsed / intro.period)
   
@@ -98,6 +103,7 @@ function intro.update(self, dt)
   
   if intro.elapsed > 127 and intro.startButton == nil then
     intro.menu.visible = true
+    intro.speed = 1
   end
 end
 
@@ -113,6 +119,8 @@ function intro.endGame()
 end
 
 function intro.showItemviewer()
+  itemviewer.elapsed = intro.elapsed
+  itemviewer.background = intro.background
   Gamestate.switch(itemviewer)
 end
 

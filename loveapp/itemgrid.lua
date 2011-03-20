@@ -9,6 +9,7 @@
 require 'middleclass'
 require 'vector'
 require 'colors'
+require 'logger'
 
 require 'items'
 
@@ -21,30 +22,68 @@ function ItemGrid:initialize()
   self.itemIds = {}
   self.width = 5
   self.padding = 3
+  self.selectedIndex = 0
+  
+  self.log = Logger(vector(10, 10))
 end
 
 function ItemGrid:addItem(itemId)
   table.insert(self.itemIds, itemId)
 end
 
-function ItemGrid:update(dt)
+function ItemGrid:update(dt, mousePos)
+  self.log:update(dt)
+  self.mousePos = mousePos
+  self.selectedIndex = self:itemIndexAtPosition(mousePos)
 end
 
+-- Returns the list index of the item that is displayed at the world position specified by pos
+function ItemGrid:itemIndexAtPosition(pos)
+  local grid = vector(math.floor( (pos.x - self.position.x - self.itemSize / 2) / ( (self.itemSize + self.padding) * self.itemScale)),
+                      math.floor( (pos.y - self.position.y - self.itemSize / 2) / ( (self.itemSize + self.padding) * self.itemScale)))
+
+  if grid.x < 0 or 
+     grid.x > self.width or 
+     grid.y < 0 or
+     grid.y > math.floor((#self.itemIds - 1) / self.width) then
+    return 0
+  end
+
+  return ((grid.y * self.width) + grid.x) + 1
+end
+
+
 function ItemGrid:draw()
-  colors.white:set()
-  
   for i, itemId in ipairs(self.itemIds) do
+    colors.white:set()
     
     local x = (i - 1) % self.width
     local y = math.floor((i - 1) / self.width)
     
+    local imageX = self.position.x + x * (self.itemSize + self.padding) * self.itemScale
+    local imageY = self.position.y + y * (self.itemSize + self.padding) * self.itemScale
+    
     love.graphics.draw(items[itemId].image, 
-                       self.position.x + x * (self.itemSize + self.padding) * self.itemScale, 
-                       self.position.y + y * (self.itemSize + self.padding) * self.itemScale, 
+                       imageX, 
+                       imageY, 
                        0, 
                        self.itemScale, 
                        self.itemScale, 
                        0, 
                        0)
+
+    -- Draw selected
+    if self.selectedIndex == i then
+      colors.red:set()
+      love.graphics.setLineWidth(4)
+      love.graphics.rectangle('line', 
+                              imageX - 1, 
+                              imageY - 1,  
+                              (self.itemSize * self.itemScale),
+                              (self.itemSize * self.itemScale))
+      colors.white:set()
+    end
   end
+  
+  self.log:draw()
 end

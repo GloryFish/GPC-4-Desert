@@ -16,6 +16,8 @@ itemviewer = Gamestate.new()
 itemviewer.level = ''
 
 function itemviewer.enter(self, pre)
+  itemviewer.period = 120
+  
   itemviewer.itemgrid = ItemGrid()
   itemviewer.itemgrid.position = vector(50, 50)
   itemviewer.itemgrid:addItem(1)
@@ -47,12 +49,17 @@ function itemviewer.mousereleased(self, x, y, button)
 end
 
 function itemviewer.update(self, dt)
-  itemviewer.itemgrid:update(dt)
+  itemviewer.elapsed = itemviewer.elapsed + dt
+  local _, time = math.modf(itemviewer.elapsed / itemviewer.period)
+
+  itemviewer.background:update(dt, time)
+  
+  local mousePos = vector(love.mouse.getX(), love.mouse.getY())
+  itemviewer.itemgrid:update(dt, mousePos)
 end
 
 function itemviewer.draw(self)
-  colors.gray:set()
-  love.graphics.rectangle('fill', 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
+  itemviewer.background:draw(dt, time)
 
   itemviewer.itemgrid:draw(dt)
 end
