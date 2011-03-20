@@ -23,13 +23,14 @@ function Inventory:initialize()
   self.width = 9
   self.padding = 3
   self.selectedIndex = 0
+  self.selectedItemId = 0
   self.maxitems = 50
   
   self.log = Logger(vector(10, 10))
 end
 
 function Inventory:addItem(itemId)
-  if #self.itemIds < self.maxitems + 1 then
+  if #self.itemIds < self.maxitems then
     table.insert(self.itemIds, itemId)
   end
 end
@@ -38,6 +39,12 @@ function Inventory:update(dt, mousePos)
   self.log:update(dt)
   self.mousePos = mousePos
   self.selectedIndex = self:itemIndexAtPosition(mousePos)
+  
+  if self.selectedIndex ~= 0 then
+    self.selectedItemId = self.itemIds[self.selectedIndex]
+  else
+    self.selectedItemId = 0
+  end
 end
 
 -- Returns the list index of the item that is displayed at the world position specified by pos
@@ -56,7 +63,12 @@ function Inventory:itemIndexAtPosition(pos)
     return 0
   end
 
-  return ((grid.y * self.width) + grid.x) + 1
+  local index = ((grid.y * self.width) + grid.x) + 1
+  if index <= #self.itemIds then
+    return index
+  else
+    return 0
+  end
 end
 
 function Inventory:drawGrid()
@@ -64,8 +76,13 @@ function Inventory:drawGrid()
   
   love.graphics.setLineWidth(4)
   
+ local rows = math.floor(self.maxitems / self.width)
+ if self.maxitems % self.width == 0 then
+   rows = rows - 1
+ end
+  
   for x = 0, self.width - 1 do
-    for y = 0, (self.maxitems / self.width) do
+    for y = 0, rows do
       
       local boxX = self.position.x + x * (self.itemSize + self.padding) * self.itemScale
       local boxY = self.position.y + y * (self.itemSize + self.padding) * self.itemScale
