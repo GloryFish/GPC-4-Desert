@@ -20,25 +20,11 @@ function itemviewer.enter(self, pre)
   
   itemviewer.itemgrid = ItemGrid()
   itemviewer.itemgrid.position = vector(50, 50)
-  itemviewer.itemgrid:addItem(1)
-  itemviewer.itemgrid:addItem(2)
-  itemviewer.itemgrid:addItem(3)
-  itemviewer.itemgrid:addItem(4)
-  itemviewer.itemgrid:addItem(2)
-  itemviewer.itemgrid:addItem(3)
-  itemviewer.itemgrid:addItem(3)
-  itemviewer.itemgrid:addItem(1)
-  itemviewer.itemgrid:addItem(1)
-  itemviewer.itemgrid:addItem(1)
-  itemviewer.itemgrid:addItem(1)
-  itemviewer.itemgrid:addItem(1)
-  itemviewer.itemgrid:addItem(1)
-  itemviewer.itemgrid:addItem(1)
-  itemviewer.itemgrid:addItem(1)
-  itemviewer.itemgrid:addItem(1)
-  itemviewer.itemgrid:addItem(3)
-  itemviewer.itemgrid:addItem(4)
-  itemviewer.itemgrid:addItem(2)
+  
+  for i = 1, #items do
+    itemviewer.itemgrid:addItem(i)
+  end
+
   
 end
 
