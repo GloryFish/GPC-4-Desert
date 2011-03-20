@@ -67,6 +67,7 @@ end
 
 function intro.mousepressed(self, x, y, button)
   if intro.menu.visible ~= true then
+    intro.elapsed = 127
     intro.fader.state = nil
     intro.fader.opacity = 0
     intro.menu.visible = true
