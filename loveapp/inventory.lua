@@ -23,6 +23,7 @@ function Inventory:initialize()
   self.width = 9
   self.padding = 3
   self.selectedIndex = 0
+  self.maxitems = 500
   
   self.log = Logger(vector(10, 10))
 end
@@ -39,6 +40,10 @@ end
 
 -- Returns the list index of the item that is displayed at the world position specified by pos
 function Inventory:itemIndexAtPosition(pos)
+  if pos == nil then
+    return 0
+  end
+  
   local grid = vector(math.floor( (pos.x - self.position.x - self.itemSize / 2) / ( (self.itemSize + self.padding) * self.itemScale)),
                       math.floor( (pos.y - self.position.y - self.itemSize / 2) / ( (self.itemSize + self.padding) * self.itemScale)))
 
