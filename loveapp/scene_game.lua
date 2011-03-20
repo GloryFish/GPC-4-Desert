@@ -19,7 +19,7 @@ function game.enter(self, pre)
   game.inventory = Inventory()
   game.inventory.position = vector(50, 50)
   game.inventory.width = 5
-  game.inventory.maxitems = 25
+  game.inventory.maxitems = 20
   
 end
 

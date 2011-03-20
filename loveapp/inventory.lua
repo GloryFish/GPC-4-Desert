@@ -29,7 +29,7 @@ function Inventory:initialize()
 end
 
 function Inventory:addItem(itemId)
-  if #self.itemIds < self.maxitems + 1 then
+  if #self.itemIds < self.maxitems then
     table.insert(self.itemIds, itemId)
   end
 end
@@ -64,8 +64,13 @@ function Inventory:drawGrid()
   
   love.graphics.setLineWidth(4)
   
+ local rows = math.floor(self.maxitems / self.width)
+ if self.maxitems % self.width == 0 then
+   rows = rows - 1
+ end
+  
   for x = 0, self.width - 1 do
-    for y = 0, (self.maxitems / self.width) do
+    for y = 0, rows do
       
       local boxX = self.position.x + x * (self.itemSize + self.padding) * self.itemScale
       local boxY = self.position.y + y * (self.itemSize + self.padding) * self.itemScale

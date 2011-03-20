@@ -20,6 +20,8 @@ function itemviewer.enter(self, pre)
   
   itemviewer.inventory = Inventory()
   itemviewer.inventory.position = vector(50, 50)
+  itemviewer.inventory.width = 9
+  itemviewer.inventory.maxitems = 54
   
   while #itemviewer.inventory.itemIds < itemviewer.inventory.maxitems do
     for i = 1, #items do
