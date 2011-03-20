@@ -25,6 +25,12 @@ function game.enter(self, pre)
   
   game.energy = Energy()
   game.energy.position = vector(50, 30)
+  
+  game.things = {}
+  game.leavingThings = {}
+  game.thingSpeed = 300
+  
+  game.hazardChance = 0.1
 end
 
 function game.keypressed(self, key, unicode)
@@ -34,13 +40,26 @@ function game.keypressed(self, key, unicode)
 end
 
 function game.getEnergyLossRate(self)
-  return 1
+  return 0.0
 end
 
 function game.mousepressed(self, x, y, button)
 end
 
 function game.mousereleased(self, x, y, button)
+end
+
+function game.spawnThing(self)
+  local itemRoll = math.random()
+
+  if itemRoll > self.hazardChance then
+    local thing = {
+      id = items:getRandomId(),
+      type = 'item',
+      position = vector(700, 450)
+    }
+    table.insert(self.things, thing)
+  end  
 end
 
 function game.update(self, dt)
@@ -59,6 +78,31 @@ function game.update(self, dt)
     self.man:setState('dead')
     game:gameOver()
   end
+  
+  if #self.things == 0 then
+    self:spawnThing()
+  end
+  
+  -- Update arriving items
+  local toRemove = {}
+  for i, thing in ipairs(self.things) do
+    thing.position.x = thing.position.x - self.thingSpeed * dt
+    
+    if thing.position.x < -64 then -- Edge of screen
+      table.insert(toRemove, i)
+    elseif thing.position.x < self.man.position.x then -- At the man
+      if thing.type == 'item' then
+        if #self.inventory.itemIds < self.inventory.maxitems then
+          self.inventory:addItem(thing.id)
+          table.insert(toRemove, i)
+        end
+      end
+    end
+  end
+  for i, v in ipairs(toRemove) do
+     table.remove(self.things, v - i + 1)
+  end
+  
 end
 
 function game.gameOver(self)
@@ -73,6 +117,21 @@ function game.draw(self)
   self.energy:draw()
   self.inventory:draw()
   self.man:draw()
+  
+  
+  
+  for i, thing in ipairs(self.things) do
+    love.graphics.draw(items[thing.id].image, 
+                       thing.position.x, 
+                       thing.position.y, 
+                       0, 
+                       4, 
+                       4, 
+                       0, 
+                       0)
+  end
+  
+  
 end
 
 

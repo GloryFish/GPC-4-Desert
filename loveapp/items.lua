@@ -284,6 +284,8 @@ items[33] = {
   image = love.graphics.newImage('resources/images/items/moonshine.png')
 }
 
+items.count = 33
+
 function items.colorForRarity(rarity)
   if rarity == 'common' then
     return colors.white
@@ -296,6 +298,10 @@ function items.colorForRarity(rarity)
   end
 end
 
+function items.getRandomId()
+  -- TODO: pick item based on rarity
+  return math.random(items.count)
+end
 for i, item in ipairs(items) do
   item.image:setFilter('nearest', 'nearest')
 end
