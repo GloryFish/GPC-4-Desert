@@ -38,7 +38,7 @@ function intro.enter(self, pre)
 
   intro.textfader = TextFader(vector(love.graphics.getWidth() / 2, 525), fonts.default, colors.white)
   
-  intro.man = Man(vector(love.graphics.getWidth() / 2, 450))
+  intro.man = Man(vector(200, 450))
   intro.man:setState('standing')
   
   intro.menu = Menu(vector(love.graphics.getWidth() / 2, 200))
@@ -69,11 +69,6 @@ end
 
 function intro.mousepressed(self, x, y, button)
   if intro.menu.visible ~= true then
-    -- intro.elapsed = 127
-    -- intro.fader.state = nil
-    -- intro.fader.opacity = 0
-    -- intro.menu.visible = true
-    
     intro.speed = 35
   end
   
@@ -102,7 +97,7 @@ function intro.update(self, dt)
   
   intro.man:update(dt)
   
-  if intro.elapsed > 127 and intro.startButton == nil then
+  if intro.elapsed > 121 and intro.startButton == nil then
     intro.menu.visible = true
     intro.speed = 1
   end

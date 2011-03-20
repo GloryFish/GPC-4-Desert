@@ -68,7 +68,7 @@ items[7] = {
 
 items[8] = {
   name = 'cap',
-  description = 'A stylish blue baseball cap. Impress your... well, there's no one out here to impress, is there?',
+  description = 'A stylish blue baseball cap. Impress your... well, there\'s no one out here to impress, is there?',
   value = 5,
   rarity = 'rare',
   image = love.graphics.newImage('resources/images/items/cap.png')
@@ -76,7 +76,7 @@ items[8] = {
 
 items[9] = {
   name = 'candybar',
-  description = 'A delicious choclatey treat. Don't spoil your dinner!',
+  description = 'A delicious choclatey treat. Don\'t spoil your dinner!',
   value = 3,
   rarity = 'uncommon',
   image = love.graphics.newImage('resources/images/items/cap.png')
@@ -84,7 +84,7 @@ items[9] = {
 
 items[10] = {
   name = 'cake',
-  description = 'Baked to perfection! It's a tad salty... That's weird.',
+  description = 'Baked to perfection! It\'s a tad salty... That\'s weird.',
   value = 3,
   rarity = 'uncommon',
   image = love.graphics.newImage('resources/images/items/cakeslice.png')
@@ -100,7 +100,7 @@ items[11] = {
 
 items[12] = {
   name = 'chips',
-  description = 'BBQ potato chips! Someone left the bag open though, so they're kind stale.',
+  description = 'BBQ potato chips! Someone left the bag open though, so they\'re kind stale.',
   value = 1,
   rarity = 'common',
   image = love.graphics.newImage('resources/images/items/chips.png')
