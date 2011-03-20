@@ -76,7 +76,7 @@ items[8] = {
 
 items[9] = {
   name = 'candybar',
-  description = 'A delicious choclatey treat. Don\'t spoil your dinner!',
+  description = 'A delicious chocolaty treat. Don\'t spoil your dinner!',
   value = 3,
   rarity = 'uncommon',
   image = love.graphics.newImage('resources/images/items/candybar.png')
@@ -100,7 +100,7 @@ items[11] = {
 
 items[12] = {
   name = 'chips',
-  description = 'BBQ potato chips! Someone left the bag open though, so they\'re kind stale.',
+  description = 'BBQ potato chips! Someone left the bag open though, so they\'re kind of stale.',
   value = 1,
   rarity = 'common',
   image = love.graphics.newImage('resources/images/items/chips.png')

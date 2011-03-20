@@ -10,7 +10,7 @@ require 'logger'
 require 'vector'
 require 'colors'
 require 'items'
-require 'itemgrid'
+require 'inventory'
 
 itemviewer = Gamestate.new()
 itemviewer.level = ''
@@ -18,14 +18,18 @@ itemviewer.level = ''
 function itemviewer.enter(self, pre)
   itemviewer.period = 120
   
-  itemviewer.itemgrid = ItemGrid()
-  itemviewer.itemgrid.position = vector(50, 50)
+  itemviewer.inventory = Inventory()
+  itemviewer.inventory.position = vector(50, 50)
   
   for i = 1, #items do
-    itemviewer.itemgrid:addItem(i)
-  end
+    itemviewer.inventory:addItem(i)
+  end  
+end
 
-  
+function itemviewer.keypressed(self, key, unicode)
+  if key == 'escape' then
+    self:quit()
+  end
 end
 
 function itemviewer.mousepressed(self, x, y, button)
@@ -41,13 +45,17 @@ function itemviewer.update(self, dt)
   itemviewer.background:update(dt, time)
   
   local mousePos = vector(love.mouse.getX(), love.mouse.getY())
-  itemviewer.itemgrid:update(dt, mousePos)
+  itemviewer.inventory:update(dt, mousePos)
 end
 
 function itemviewer.draw(self)
   itemviewer.background:draw(dt, time)
 
-  itemviewer.itemgrid:draw(dt)
+  itemviewer.inventory:draw(dt)
+end
+
+function itemviewer.quit(self)
+  Gamestate.switch(intro)
 end
 
 function itemviewer.leave(self)
