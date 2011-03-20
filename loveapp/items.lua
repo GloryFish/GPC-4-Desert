@@ -8,6 +8,8 @@
 
 -- Rarities: common, uncommon, rare, legendary
 
+require 'colors'
+
 items = {}
 
 items[1] = {
@@ -281,6 +283,18 @@ items[33] = {
   rarity = 'rare',
   image = love.graphics.newImage('resources/images/items/moonshine.png')
 }
+
+function items.colorForRarity(rarity)
+  if rarity == 'common' then
+    return colors.white
+  elseif rarity == 'uncommon' then
+    return colors.green
+  elseif rarity == 'rare' then
+    return colors.blue
+  elseif rarity == 'legendary' then
+    return colors.orange
+  end
+end
 
 for i, item in ipairs(items) do
   item.image:setFilter('nearest', 'nearest')

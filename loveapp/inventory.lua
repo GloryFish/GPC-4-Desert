@@ -23,6 +23,7 @@ function Inventory:initialize()
   self.width = 9
   self.padding = 3
   self.selectedIndex = 0
+  self.selectedItemId = 0
   self.maxitems = 50
   
   self.log = Logger(vector(10, 10))
@@ -38,6 +39,12 @@ function Inventory:update(dt, mousePos)
   self.log:update(dt)
   self.mousePos = mousePos
   self.selectedIndex = self:itemIndexAtPosition(mousePos)
+  
+  if self.selectedIndex ~= 0 then
+    self.selectedItemId = self.itemIds[self.selectedIndex]
+  else
+    self.selectedItemId = 0
+  end
 end
 
 -- Returns the list index of the item that is displayed at the world position specified by pos
@@ -56,7 +63,12 @@ function Inventory:itemIndexAtPosition(pos)
     return 0
   end
 
-  return ((grid.y * self.width) + grid.x) + 1
+  local index = ((grid.y * self.width) + grid.x) + 1
+  if index <= #self.itemIds then
+    return index
+  else
+    return 0
+  end
 end
 
 function Inventory:drawGrid()

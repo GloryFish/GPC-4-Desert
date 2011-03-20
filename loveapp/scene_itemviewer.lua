@@ -11,23 +11,26 @@ require 'vector'
 require 'colors'
 require 'items'
 require 'inventory'
+require 'iteminfo'
 
 itemviewer = Gamestate.new()
-itemviewer.level = ''
 
 function itemviewer.enter(self, pre)
   itemviewer.period = 120
   
   itemviewer.inventory = Inventory()
   itemviewer.inventory.position = vector(50, 50)
-  itemviewer.inventory.width = 9
-  itemviewer.inventory.maxitems = 54
+  itemviewer.inventory.width = 5
+  itemviewer.inventory.maxitems = #items
   
   while #itemviewer.inventory.itemIds < itemviewer.inventory.maxitems do
     for i = 1, #items do
       itemviewer.inventory:addItem(i)
     end  
   end
+  
+  itemviewer.iteminfo = ItemInfo()
+  itemviewer.iteminfo.position = vector(450, 50)
 end
 
 function itemviewer.keypressed(self, key, unicode)
@@ -50,12 +53,17 @@ function itemviewer.update(self, dt)
   
   local mousePos = vector(love.mouse.getX(), love.mouse.getY())
   itemviewer.inventory:update(dt, mousePos)
+  
+  itemviewer.iteminfo:update(dt)
+  
+  itemviewer.iteminfo:setItemId(itemviewer.inventory.selectedItemId)
 end
 
 function itemviewer.draw(self)
-  itemviewer.background:draw(dt, time)
+  itemviewer.background:draw()
 
-  itemviewer.inventory:draw(dt)
+  itemviewer.inventory:draw()
+  itemviewer.iteminfo:draw()
 end
 
 function itemviewer.quit(self)
