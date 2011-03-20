@@ -28,6 +28,13 @@ function Man:initialize(pos)
   self.animations['standing'].quads = {
     love.graphics.newQuad(0 * self.tileSize.x, 3 * self.tileSize.y, self.tileSize.x, self.tileSize.y, self.tileset:getWidth(), self.tileset:getHeight()),
   }
+
+  self.animations['walking'] = {}
+  self.animations['walking'].frameInterval = 0.8
+  self.animations['walking'].quads = {
+    love.graphics.newQuad(1 * self.tileSize.x, 1 * self.tileSize.y, self.tileSize.x, self.tileSize.y, self.tileset:getWidth(), self.tileset:getHeight()),
+    love.graphics.newQuad(2 * self.tileSize.x, 1 * self.tileSize.y, self.tileSize.x, self.tileSize.y, self.tileset:getWidth(), self.tileset:getHeight()),
+  }
     
   self.animation = {}
   self.animation.frame = 1
@@ -39,7 +46,7 @@ function Man:initialize(pos)
 end
 
 function Man:setState(state)
-  if (self.state.current ~= animation) then
+  if (self.state.current ~= state) then
     self.state = state
     self.animation.current = 1
     self.animation.frame = 1
@@ -53,7 +60,6 @@ function Man:update(dt)
   -- Handle animation
   if #self.animations[self.state].quads > 1 then -- More than one frame
     local interval = self.animations[self.state].frameInterval
-    interval = interval + (interval - (interval * math.abs(self.movement.x)))
     
     if self.animation.elapsed > interval then -- Switch to next frame
       self.animation.frame = self.animation.frame + 1

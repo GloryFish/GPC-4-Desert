@@ -39,6 +39,7 @@ function intro.enter(self, pre)
   intro.textfader = TextFader(vector(love.graphics.getWidth() / 2, 525), fonts.default, colors.white)
   
   intro.man = Man(vector(love.graphics.getWidth() / 2, 450))
+  intro.man:setState('standing')
   
   intro.menu = Menu(vector(love.graphics.getWidth() / 2, 200))
   intro.menu.visible = false
@@ -111,6 +112,7 @@ end
 function intro.beginGame()
   game.elapsed = intro.elapsed
   game.background = intro.background
+  game.man = intro.man
   Gamestate.switch(game)
 end
 

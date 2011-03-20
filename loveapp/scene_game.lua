@@ -14,6 +14,10 @@ game.level = ''
 
 function game.enter(self, pre)
   game.period = 120
+  game.man:setState('walking')
+end
+
+function game.mousepressed(self, x, y, button)
 end
 
 function game.mousereleased(self, x, y, button)
@@ -22,12 +26,14 @@ end
 function game.update(self, dt)
   game.elapsed = game.elapsed + dt
   local _, time = math.modf(game.elapsed / game.period)
-  
- self.background:update(dt, time)
+  self.background:update(dt, time)
+
+  self.man:update(dt)
 end
 
 function game.draw(self)
   self.background:draw(dt)
+  self.man:draw()
 end
 
 function game.leave(self)
