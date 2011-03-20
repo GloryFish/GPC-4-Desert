@@ -116,10 +116,67 @@ items[13] = {
 
 items[14] = {
   name = 'gun',
-  description = 'A gun. Maybe you can take potshots at some scorpions.',
-  value = 1,
-  rarity = 'common',
+  description = 'A gun. Maybe you can take potshots at some scorpions, or a coyote.',
+  value = 10,
+  rarity = 'uncommon',
   image = love.graphics.newImage('resources/images/items/gun.png')
+}
+
+items[15] = {
+  name = 'hook',
+  description = 'Oh! A delightful novelty hook hand! What fun!',
+  value = 5,
+  rarity = 'uncommon',
+  image = love.graphics.newImage('resources/images/items/hook.png')
+}
+
+items[16] = {
+  name = 'glasses',
+  description = 'Everything comes into focus, and you realize... you/'re lost in 
+a desert.',
+  value = 5,
+  rarity = 'uncommon',
+  image = love.graphics.newImage('resources/images/items/glasses.png')
+}
+
+items[17] = {
+  name = 'laptop',
+  description = 'A shiny new MacBook Pro. How/'d this get way out here?',
+  value = 50,
+  rarity = 'rare',
+  image = love.graphics.newImage('resources/images/items/laptop.png')
+}
+
+items[18] = {
+  name = 'lunch',
+  description = 'This appears to be Jay/'s lunch. Who/'s Jay?',
+  value = 1000,
+  rarity = 'rare',
+  image = love.graphics.newImage('resources/images/items/lunch.png')
+}
+
+items[19] = {
+  name = 'moose',
+  description = 'A mounted moose head. This seems useful.',
+  value = 100,
+  rarity = 'rare',
+  image = love.graphics.newImage('resources/images/items/moose.png')
+}
+
+items[20] = {
+  name = 'liquor',
+  description = 'Smells like either very strong bourbon or iodine.',
+  value = 20,
+  rarity = 'uncommon',
+  image = love.graphics.newImage('resources/images/items/liquor.png')
+}
+
+items[21] = {
+  name = 'meds',
+  description = 'Makes everything seem a bit nicer.',
+  value = 20,
+  rarity = 'uncommon',
+  image = love.graphics.newImage('resources/images/items/meds.png')
 }
 
 
