@@ -36,6 +36,11 @@ function Man:initialize(pos)
     love.graphics.newQuad(2 * self.tileSize.x, 1 * self.tileSize.y, self.tileSize.x, self.tileSize.y, self.tileset:getWidth(), self.tileset:getHeight()),
   }
     
+  self.animations['dead'] = {}
+  self.animations['dead'].quads = {
+    love.graphics.newQuad(3 * self.tileSize.x, 0, self.tileSize.x * 2, self.tileSize.y, self.tileset:getWidth(), self.tileset:getHeight()),
+  }
+
   self.animation = {}
   self.animation.frame = 1
   self.animation.elapsed = 0
@@ -74,10 +79,20 @@ end
 function Man:draw()
   colors.white:set()
 
+  local manX = self.position.x
+  local manY = self.position.y
+  local offset = self.offset
+  
+  if self.state == 'dead' then
+    manX = manX - 48
+    manY = manY + 48
+    offset = vector(16, 8)
+  end
+
   love.graphics.drawq(self.tileset,
                       self.animations[self.state].quads[self.animation.frame], 
-                      self.position.x, 
-                      self.position.y,
+                      manX, 
+                      manY,
                       0,
                       self.scale,
                       self.scale,

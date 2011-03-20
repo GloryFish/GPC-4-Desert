@@ -34,6 +34,7 @@ colors = {
   red = Color(255, 0, 0),
   green = Color(0, 255, 0),
   blue = Color(0, 0, 255),
+  orange = Color(205, 114, 30),
   skyblue = Color(58, 88, 135),
   white = Color(255, 255, 255),
   black = Color(0, 0, 0),
