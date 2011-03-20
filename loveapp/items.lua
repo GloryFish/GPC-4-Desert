@@ -132,8 +132,7 @@ items[15] = {
 
 items[16] = {
   name = 'glasses',
-  description = 'Everything comes into focus, and you realize... you/'re lost in 
-a desert.',
+  description = 'Everything comes into focus... you\'re lost in a desert.',
   value = 5,
   rarity = 'uncommon',
   image = love.graphics.newImage('resources/images/items/glasses.png')
@@ -141,7 +140,7 @@ a desert.',
 
 items[17] = {
   name = 'laptop',
-  description = 'A shiny new MacBook Pro. How/'d this get way out here?',
+  description = 'A shiny new MacBook Pro. How\'d this get way out here?',
   value = 50,
   rarity = 'rare',
   image = love.graphics.newImage('resources/images/items/laptop.png')
@@ -149,7 +148,7 @@ items[17] = {
 
 items[18] = {
   name = 'lunch',
-  description = 'This appears to be Jay/'s lunch. Who/'s Jay?',
+  description = 'This appears to be Jay\'s lunch. Who\'s Jay?',
   value = 1000,
   rarity = 'rare',
   image = love.graphics.newImage('resources/images/items/lunch.png')
