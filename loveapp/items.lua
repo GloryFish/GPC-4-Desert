@@ -66,6 +66,62 @@ items[7] = {
   image = love.graphics.newImage('resources/images/items/chicken.png')
 }
 
+items[8] = {
+  name = 'cap',
+  description = 'A stylish blue baseball cap. Impress your... well, there's no one out here to impress, is there?',
+  value = 5,
+  rarity = 'rare',
+  image = love.graphics.newImage('resources/images/items/cap.png')
+}
+
+items[9] = {
+  name = 'candybar',
+  description = 'A delicious choclatey treat. Don't spoil your dinner!',
+  value = 3,
+  rarity = 'uncommon',
+  image = love.graphics.newImage('resources/images/items/cap.png')
+}
+
+items[10] = {
+  name = 'cake',
+  description = 'Baked to perfection! It's a tad salty... That's weird.',
+  value = 3,
+  rarity = 'uncommon',
+  image = love.graphics.newImage('resources/images/items/cakeslice.png')
+}
+
+items[11] = {
+  name = 'cell',
+  description = 'No bars. Figures. The Symbian interface is a little wonky too.',
+  value = 1,
+  rarity = 'common',
+  image = love.graphics.newImage('resources/images/items/cell.png')
+}
+
+items[12] = {
+  name = 'chips',
+  description = 'BBQ potato chips! Someone left the bag open though, so they're kind stale.',
+  value = 1,
+  rarity = 'common',
+  image = love.graphics.newImage('resources/images/items/chips.png')
+}
+
+items[13] = {
+  name = 'clock',
+  description = 'A bell ringer alarm clock. A pleasing red color.',
+  value = 1,
+  rarity = 'common',
+  image = love.graphics.newImage('resources/images/items/clock.png')
+}
+
+items[14] = {
+  name = 'gun',
+  description = 'A gun. Maybe you can take potshots at some scorpions.',
+  value = 1,
+  rarity = 'common',
+  image = love.graphics.newImage('resources/images/items/gun.png')
+}
+
 
 for i, item in ipairs(items) do
   item.image:setFilter('nearest', 'nearest')
