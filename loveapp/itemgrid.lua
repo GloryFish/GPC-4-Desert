@@ -20,7 +20,7 @@ function ItemGrid:initialize()
   self.itemScale = 4
   self.position = vector(0, 0)
   self.itemIds = {}
-  self.width = 5
+  self.width = 9
   self.padding = 3
   self.selectedIndex = 0
   
