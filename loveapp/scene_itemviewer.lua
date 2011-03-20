@@ -23,9 +23,13 @@ function itemviewer.enter(self, pre)
   
   for i = 1, #items do
     itemviewer.inventory:addItem(i)
-  end
+  end  
+end
 
-  
+function itemviewer.keypressed(self, key, unicode)
+  if key == 'escape' then
+    self:quit()
+  end
 end
 
 function itemviewer.mousepressed(self, x, y, button)
@@ -48,6 +52,10 @@ function itemviewer.draw(self)
   itemviewer.background:draw(dt, time)
 
   itemviewer.inventory:draw(dt)
+end
+
+function itemviewer.quit(self)
+  Gamestate.switch(intro)
 end
 
 function itemviewer.leave(self)

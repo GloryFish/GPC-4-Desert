@@ -16,8 +16,14 @@ function game.enter(self, pre)
   game.period = 120
   game.man:setState('walking')
   
-  game.inventory = Inventory(50, 50)
+  game.inventory = Inventory(vector(50, 50))
   
+end
+
+function game.keypressed(self, key, unicode)
+  if key == 'escape' then
+    self:quit()
+  end
 end
 
 function game.mousepressed(self, x, y, button)
@@ -39,6 +45,11 @@ function game.draw(self)
   self.background:draw(dt)
   self.inventory:draw()
   self.man:draw()
+end
+
+
+function game.quit(self)
+  Gamestate.switch(intro)
 end
 
 function game.leave(self)
