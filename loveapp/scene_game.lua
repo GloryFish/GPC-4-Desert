@@ -15,8 +15,11 @@ game.level = ''
 function game.enter(self, pre)
   game.period = 120
   game.man:setState('walking')
-  
-  game.inventory = Inventory(vector(50, 50))
+
+  game.inventory = Inventory()
+  game.inventory.position = vector(50, 50)
+  game.inventory.width = 5
+  game.inventory.maxitems = 25
   
 end
 

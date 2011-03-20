@@ -23,13 +23,15 @@ function Inventory:initialize()
   self.width = 9
   self.padding = 3
   self.selectedIndex = 0
-  self.maxitems = 500
+  self.maxitems = 50
   
   self.log = Logger(vector(10, 10))
 end
 
 function Inventory:addItem(itemId)
-  table.insert(self.itemIds, itemId)
+  if #self.itemIds < self.maxitems + 1 then
+    table.insert(self.itemIds, itemId)
+  end
 end
 
 function Inventory:update(dt, mousePos)
@@ -57,8 +59,31 @@ function Inventory:itemIndexAtPosition(pos)
   return ((grid.y * self.width) + grid.x) + 1
 end
 
+function Inventory:drawGrid()
+  colors.transgray:set()
+  
+  love.graphics.setLineWidth(4)
+  
+  for x = 0, self.width - 1 do
+    for y = 0, (self.maxitems / self.width) do
+      
+      local boxX = self.position.x + x * (self.itemSize + self.padding) * self.itemScale
+      local boxY = self.position.y + y * (self.itemSize + self.padding) * self.itemScale
+      
+      love.graphics.rectangle('line', 
+                              boxX, 
+                              boxY, 
+                              (self.itemSize + 2) * self.itemScale, 
+                              (self.itemSize + 2) * self.itemScale)
+    end
+  end
+end
 
 function Inventory:draw()
+  -- Draw grid
+  self:drawGrid()
+  
+  -- Draw items
   for i, itemId in ipairs(self.itemIds) do
     colors.white:set()
     
@@ -84,8 +109,8 @@ function Inventory:draw()
       love.graphics.rectangle('line', 
                               imageX - 1, 
                               imageY - 1,  
-                              (self.itemSize * self.itemScale),
-                              (self.itemSize * self.itemScale))
+                              (self.itemSize + 2) * self.itemScale,
+                              (self.itemSize + 2)* self.itemScale)
       colors.white:set()
     end
   end

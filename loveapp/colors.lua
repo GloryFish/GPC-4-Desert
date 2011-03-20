@@ -39,5 +39,6 @@ colors = {
   black = Color(0, 0, 0),
   brown = Color(135, 113, 58),
   clear = Color(0, 0, 0, 0),
-  gray = Color(44, 44, 44)
+  gray = Color(44, 44, 44),
+  transgray = Color(44, 44, 44, 44)
 }

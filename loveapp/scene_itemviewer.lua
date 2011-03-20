@@ -21,9 +21,11 @@ function itemviewer.enter(self, pre)
   itemviewer.inventory = Inventory()
   itemviewer.inventory.position = vector(50, 50)
   
-  for i = 1, #items do
-    itemviewer.inventory:addItem(i)
-  end  
+  while #itemviewer.inventory.itemIds < itemviewer.inventory.maxitems do
+    for i = 1, #items do
+      itemviewer.inventory:addItem(i)
+    end  
+  end
 end
 
 function itemviewer.keypressed(self, key, unicode)
