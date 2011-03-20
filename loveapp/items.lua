@@ -36,7 +36,7 @@ items[3] = {
 
 items[4] = {
   name = 'boombox',
-  description = 'Pump up the jam.',
+  description = 'Pump up the jam. One singular jam.',
   value = 1,
   rarity = 'common',
   image = love.graphics.newImage('resources/images/items/boombox.png')
@@ -133,15 +133,15 @@ items[15] = {
 items[16] = {
   name = 'glasses',
   description = 'Everything comes into focus... you\'re lost in a desert.',
-  value = 5,
+  value = 15,
   rarity = 'uncommon',
   image = love.graphics.newImage('resources/images/items/glasses.png')
 }
 
 items[17] = {
   name = 'laptop',
-  description = 'A shiny new MacBook Pro. How\'d this get way out here?',
-  value = 50,
+  description = 'A shiny new MacBook Pro. No Wifi networks are available.',
+  value = 200,
   rarity = 'rare',
   image = love.graphics.newImage('resources/images/items/laptop.png')
 }
@@ -164,7 +164,7 @@ items[19] = {
 
 items[20] = {
   name = 'liquor',
-  description = 'Smells like either very strong bourbon or iodine.',
+  description = 'This might be a good thing, or a very bad thing.',
   value = 20,
   rarity = 'uncommon',
   image = love.graphics.newImage('resources/images/items/liquor.png')
@@ -178,6 +178,109 @@ items[21] = {
   image = love.graphics.newImage('resources/images/items/meds.png')
 }
 
+items[22] = {
+  name = 'log',
+  description = 'A very dull log.',
+  value = 1,
+  rarity = 'common',
+  image = love.graphics.newImage('resources/images/items/log.png')
+}
+
+items[23] = {
+  name = 'money',
+  description = 'Spend it wisely, if you can find somewhere to spend it.',
+  value = 200,
+  rarity = 'rare',
+  image = love.graphics.newImage('resources/images/items/money.png')
+}
+
+items[24] = {
+  name = 'cup',
+  description = 'A red plastic party cup. This would look good with booze in it.',
+  value = 20,
+  rarity = 'uncommon',
+  image = love.graphics.newImage('resources/images/items/partycup.png')
+}
+
+items[25] = {
+  name = 'hat',
+  description = 'A wild and crazy party hat.',
+  value = 20,
+  rarity = 'uncommon',
+  image = love.graphics.newImage('resources/images/items/partyhat.png')
+}
+
+items[26] = {
+  name = 'phone',
+  description = 'Ring ring! Hello? Who is it? Oh that\'s right, nobody.',
+  value = 30,
+  rarity = 'uncommon',
+  image = love.graphics.newImage('resources/images/items/phone.png')
+}
+
+items[26] = {
+  name = 'photo',
+  description = 'This appears to be a photo of a dog or a monkey.',
+  value = 40,
+  rarity = 'uncommon',
+  image = love.graphics.newImage('resources/images/items/photo.png')
+}
+
+items[27] = {
+  name = 'plant',
+  description = 'A potted plant. Don\'t forget to water it.',
+  value = 5,
+  rarity = 'common',
+  image = love.graphics.newImage('resources/images/items/plant.png')
+}
+
+items[28] = {
+  name = 'ring',
+  description = 'A nice gold ring. You try it on. You don\'t turn invisible.',
+  value = 500,
+  rarity = 'rare',
+  image = love.graphics.newImage('resources/images/items/ring.png')
+}
+
+items[29] = {
+  name = 'rock',
+  description = 'Wow. A rock. Amazing.',
+  value = 1,
+  rarity = 'common',
+  image = love.graphics.newImage('resources/images/items/rock.png')
+}
+
+items[30] = {
+  name = 'shoe',
+  description = 'A sturdy shoe. Looks like it might go on your feet.',
+  value = 20,
+  rarity = 'uncommon',
+  image = love.graphics.newImage('resources/images/items/shoe.png')
+}
+
+items[31] = {
+  name = 'soda',
+  description = 'I did not know they still made Tab.',
+  value = 20,
+  rarity = 'uncommon',
+  image = love.graphics.newImage('resources/images/items/soda.png')
+}
+
+items[32] = {
+  name = 'tumbleweed',
+  description = 'Just a nice tumbleweed. Look at it tumblin\'.',
+  value = 1,
+  rarity = 'common',
+  image = love.graphics.newImage('resources/images/items/tumbleweed.png')
+}
+
+items[33] = {
+  name = 'moonshine',
+  description = 'Uh oh.',
+  value = 200,
+  rarity = 'rare',
+  image = love.graphics.newImage('resources/images/items/moonshine.png')
+}
 
 for i, item in ipairs(items) do
   item.image:setFilter('nearest', 'nearest')
