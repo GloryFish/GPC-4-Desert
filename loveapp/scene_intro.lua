@@ -36,7 +36,7 @@ function intro.enter(self, pre)
   intro.fader.maxduration = 10
   intro.fader:fadeIn()
 
-  intro.textfader = TextFader(vector(love.graphics.getWidth() / 2, 400), fonts.default, colors.white)
+  intro.textfader = TextFader(vector(love.graphics.getWidth() / 2, 525), fonts.default, colors.white)
   
   intro.man = Man(vector(love.graphics.getWidth() / 2, 450))
   
