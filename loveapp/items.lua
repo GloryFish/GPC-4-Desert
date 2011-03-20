@@ -79,7 +79,7 @@ items[9] = {
   description = 'A delicious chocolaty treat. Don\'t spoil your dinner!',
   value = 3,
   rarity = 'uncommon',
-  image = love.graphics.newImage('resources/images/items/cap.png')
+  image = love.graphics.newImage('resources/images/items/candybar.png')
 }
 
 items[10] = {
