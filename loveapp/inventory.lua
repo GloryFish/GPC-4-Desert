@@ -35,6 +35,13 @@ function Inventory:addItem(itemId)
   end
 end
 
+function Inventory:removeSelectedItem()
+  if self.selectedItemId == 0 then
+    return
+  end
+  table.remove(self.itemIds, self.selectedIndex)
+end
+
 function Inventory:update(dt, mousePos)
   self.log:update(dt)
   self.mousePos = mousePos
