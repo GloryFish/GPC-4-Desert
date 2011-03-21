@@ -24,10 +24,11 @@ items[1] = {
 
 items[2] = {
   name = 'apple',
-  description = 'A crisp apple. It is red and delicious,',
+  description = 'A crisp apple. It is red and delicious. Restores a bit of energy.',
   value = 1,
   rarity = 'common',
-  action = 'drop',
+  action = 'use',
+  energy = 0.1,
   image = love.graphics.newImage('resources/images/items/apple.png')
 }
 
@@ -54,7 +55,8 @@ items[5] = {
   description = 'A hunk of broccoli. Uncooked.',
   value = 1,
   rarity = 'common',
-  action = 'drop',
+  action = 'use',
+  energy = 0.05,
   image = love.graphics.newImage('resources/images/items/broccoli.png')
 }
 

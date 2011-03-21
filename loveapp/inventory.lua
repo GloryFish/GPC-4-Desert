@@ -35,11 +35,33 @@ function Inventory:addItem(itemId)
   end
 end
 
+function Inventory:protect(hazardId)
+  for i, itemId in ipairs(self.itemIds) do -- Loop through all items in inventory
+    if items[itemId].protect ~= nil then -- if the current item has some protection
+      for j, protectId in ipairs(items[itemId].protect) do -- loop through all protections
+        if protectId == hazardId then -- If a protection matches the hazard
+          table.remove(self.itemIds, i) -- remove the item and return success
+          return true
+        end
+      end
+    end
+  end
+  return false -- couldn't protect
+end
+
 function Inventory:removeSelectedItem()
   if self.selectedItemId == 0 then
     return
   end
   table.remove(self.itemIds, self.selectedIndex)
+end
+
+function Inventory:getTotalValue()
+  local value = 0
+  for i, itemId in ipairs(self.itemIds) do
+    value = value + items[itemId].value
+  end
+  return value
 end
 
 function Inventory:update(dt, mousePos)
@@ -145,10 +167,22 @@ function Inventory:draw()
                               imageX - 1, 
                               imageY - 1,  
                               (self.itemSize + 2) * self.itemScale,
-                              (self.itemSize + 2)* self.itemScale)
+                              (self.itemSize + 2) * self.itemScale)
       colors.white:set()
     end
   end
+
+  -- Draw value
+  love.graphics.setFont(fonts.small)
+
+  local valueText = string.format('$%i.00', self:getTotalValue())
+  local lineWidth = fonts.small:getWidth(valueText)
+
+  colors.black:set()
+  love.graphics.print(valueText, self.position.x + 1, self.position.y + 331)
+  
+  colors.white:set()
+  love.graphics.print(valueText, self.position.x, self.position.y + 330)
   
   self.log:draw()
 end
