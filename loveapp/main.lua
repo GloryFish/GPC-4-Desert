@@ -24,6 +24,7 @@ function love.load()
   fonts = {
     default        = love.graphics.newFont('resources/fonts/silkscreen.ttf', 24),
     small          = love.graphics.newFont('resources/fonts/silkscreen.ttf', 20),
+    tiny           = love.graphics.newFont('resources/fonts/silkscreen.ttf', 14),
     button         = love.graphics.newFont('resources/fonts/silkscreen.ttf', 48),
     buttonSelected = love.graphics.newFont('resources/fonts/silkscreen.ttf', 52)
   }

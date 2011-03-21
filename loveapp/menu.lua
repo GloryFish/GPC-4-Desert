@@ -41,7 +41,7 @@ function Menu:layoutButtons()
   local y = self.position.y
   for i, button in ipairs(self.buttons) do
     button.position = vector(self.position.x, y)
-    y = y + 45
+    y = y + 55
   end
 end
 
@@ -50,10 +50,10 @@ function Menu:draw()
     love.graphics.setFont(fonts.default)
 
     colors.black:set()
-    love.graphics.print('click to:', 181, 256)
+    love.graphics.print('click to:', 181, 266)
 
     colors.white:set()
-    love.graphics.print('click to:', 180, 255)
+    love.graphics.print('click to:', 180, 265)
     
     for i, button in ipairs(self.buttons) do
       button:draw()

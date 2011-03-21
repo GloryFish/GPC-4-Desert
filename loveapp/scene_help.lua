@@ -75,6 +75,13 @@ function help.draw(self)
   self.background:draw()
   self.textfader:draw()
   self.man:draw()
+  
+  love.graphics.setFont(fonts.tiny)
+  colors.black:set()
+  love.graphics.print('created by Paul Bredenberg and Jay Roberts for Game Prototype Challenge v4', 51, 571)
+  colors.white:set()
+  love.graphics.print('created by Paul Bredenberg and Jay Roberts for Game Prototype Challenge v4', 50, 570)
+  
 end
 
 function help.quit(self)
