@@ -104,7 +104,7 @@ items[10] = {
 }
 
 items[11] = {
-  name = 'cell',
+  name = 'cell phone',
   description = 'No bars. Figures. The Symbian interface is a little wonky too.',
   value = 1,
   rarity = 'common',
@@ -113,7 +113,7 @@ items[11] = {
 }
 
 items[12] = {
-  name = 'chips',
+  name = 'bag of chips',
   description = 'BBQ potato chips! Someone left the bag open though, so they\'re kind of stale.',
   value = 1,
   rarity = 'common',
@@ -149,7 +149,7 @@ items[15] = {
 }
 
 items[16] = {
-  name = 'glasses',
+  name = 'pair of glasses',
   description = 'Everything comes into focus... you\'re lost in a desert.',
   value = 15,
   rarity = 'uncommon',
@@ -194,7 +194,7 @@ items[20] = {
 }
 
 items[21] = {
-  name = 'meds',
+  name = 'bottle of pills',
   description = 'Makes everything seem a bit nicer.',
   value = 20,
   rarity = 'uncommon',
