@@ -25,33 +25,32 @@ function game.enter(self, pre)
   game.inventory = Inventory()
   game.inventory.position = vector(50, 50)
   game.inventory.width = 5
-  game.inventory.maxitems = 25
+  game.inventory.maxitems = 15
 
   -- Start with some water
   game.inventory:addItem(1)
   game.inventory:addItem(1)
   game.inventory:addItem(1)
-  
+
   game.iteminfo = ItemInfo()
   game.iteminfo.position = vector(450, 50)
   
-  game.textfader.maxduration = 7
+  game.textfader.maxduration = 5
   game.textfader.position = vector(love.graphics.getWidth() / 2, 540)
   
   game.energy = Energy()
-  game.energy.position = vector(50, 30)
+  game.energy.position = vector(50, 360)
   game.energyLossRate = 0.01
   
   game.things = {}
   game.leavingThings = {}
-  game.thingSpeed = 60
-  game.thingSpeed = 300
+  game.thingSpeed = 100
   game.thingHeight = 450
   
   game.cacti = Cacti()
   game.cacti.baseSpeed = self.thingSpeed
   
-  game.hazardChance = 0.9
+  game.hazardChance = 0.1
 end
 
 function game.keypressed(self, key, unicode)
@@ -164,7 +163,10 @@ function game.update(self, dt)
           thing.state = 'leaving'
         end
       else -- Hazard hit the man
-        self.energy.amount = self.energy.amount - hazards[thing.id].damage
+        if self.inventory:protect(thing.id) == false then
+          self.energy.amount = self.energy.amount - hazards[thing.id].damage
+        end
+        
         thing.state = 'leaving'
       end
     end
