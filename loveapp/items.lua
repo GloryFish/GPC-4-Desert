@@ -258,7 +258,7 @@ items[26] = {
 items[26] = {
   name = 'photo',
   description = 'This appears to be a photo of a dog or a monkey.',
-  value = 40,
+  value = 99,
   rarity = 'uncommon',
   action = 'drop',
   image = love.graphics.newImage('resources/images/items/photo.png')
@@ -354,6 +354,21 @@ function items.weightForRarity(rarity)
   elseif rarity == 'legendary' then
     return 2
   end
+end
+
+function items.getRandomIdEnergy()
+  local threshold = math.random(0, items.totalWeight())
+  local last_choice
+  for i, item in ipairs(items) do
+    if item.rarity ~= nil then
+      threshold = threshold - items.weightForRarity(item.rarity)
+      if threshold <= 0 and items[i].energy ~= nil then 
+        return i
+      end
+      last_choice = i
+    end
+  end
+  return last_choice
 end
 
 function items.getRandomId()

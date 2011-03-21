@@ -51,6 +51,7 @@ function game.enter(self, pre)
   game.cacti.baseSpeed = self.thingSpeed
   
   game.hazardChance = 0.1
+  game.hazardChance = 0.5
 end
 
 function game.keypressed(self, key, unicode)
@@ -94,7 +95,21 @@ end
 function game.spawnThing(self)
   local itemRoll = math.random()
 
-  if itemRoll > self.hazardChance then
+  -- if player is below certain energy and has no energy items
+  -- Spawn an energy item
+  
+  if self.energy.amount < 0.25 and self.inventory:hasEnergyItem() == false then
+    local thing = {
+      id = items:getRandomIdEnergy(),
+      type = 'item',
+      position = vector(800, 470),
+      state = 'arriving'
+    }
+    table.insert(self.things, thing)
+    local spawnString = script.spawnStrings[math.random(#script.spawnStrings)]
+
+    self.textfader:addLine(string.format(spawnString, items[thing.id].name))
+  elseif itemRoll > self.hazardChance then
     local thing = {
       id = items:getRandomId(),
       type = 'item',

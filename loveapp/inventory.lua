@@ -64,6 +64,15 @@ function Inventory:getTotalValue()
   return value
 end
 
+function Inventory:hasEnergyItem()
+  for i, itemId in ipairs(self.itemIds) do
+    if items[itemId].energy ~= nil then
+      return true
+    end
+  end
+  return false
+end
+
 function Inventory:update(dt, mousePos)
   self.log:update(dt)
   self.mousePos = mousePos
