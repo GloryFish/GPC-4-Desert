@@ -69,6 +69,9 @@ function intro.enter(self, pre)
   for i, line in ipairs(script.intro) do
     intro.textfader:addLine(line)
   end
+  
+  music.title:setVolume(1.0)
+  love.audio.play(music.title)
 end
 
 function intro.keypressed(self, key, unicode)
@@ -122,6 +125,9 @@ function intro.beginGame()
   game.background = intro.background
   game.man = intro.man
   game.textfader = intro.textfader
+
+  love.audio.stop(music.title)
+  
   Gamestate.switch(game)
 end
 

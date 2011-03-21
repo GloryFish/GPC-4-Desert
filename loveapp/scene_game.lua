@@ -51,7 +51,9 @@ function game.enter(self, pre)
   game.cacti.baseSpeed = self.thingSpeed
   
   game.hazardChance = 0.1
-  game.hazardChance = 0.5
+  
+  music.game:setVolume(0.5)
+  love.audio.play(music.game)
 end
 
 function game.keypressed(self, key, unicode)
@@ -230,6 +232,8 @@ end
 
 
 function game.quit(self)
+  love.audio.stop(music.game)
+  
   Gamestate.switch(intro)
 end
 
