@@ -78,7 +78,7 @@ items[7] = {
 
 items[8] = {
   name = 'cap',
-  description = 'A stylish blue baseball cap. Impress your... well, there\'s no one out here to impress, is there?',
+  description = 'A stylish blue baseball cap. To impress my... well, there\'s no one out here to impress, is there?',
   value = 5,
   rarity = 'rare',
   action = 'drop',
@@ -87,7 +87,7 @@ items[8] = {
 
 items[9] = {
   name = 'candybar',
-  description = 'A delicious chocolaty treat. Don\'t spoil your dinner!',
+  description = 'A delicious chocolaty treat. Better not spoil my dinner!',
   value = 3,
   rarity = 'uncommon',
   action = 'drop',
@@ -132,7 +132,7 @@ items[13] = {
 
 items[14] = {
   name = 'gun',
-  description = 'A gun. Maybe you can take potshots at some scorpions, or a coyote.',
+  description = 'A gun. Maybe I can take potshots at some scorpions, or a coyote.',
   value = 10,
   rarity = 'uncommon',
   action = 'drop',
@@ -150,7 +150,7 @@ items[15] = {
 
 items[16] = {
   name = 'pair of glasses',
-  description = 'Everything comes into focus... you\'re lost in a desert.',
+  description = 'Everything comes into focus...I\'m lost in a desert.',
   value = 15,
   rarity = 'uncommon',
   action = 'drop',
@@ -213,7 +213,7 @@ items[22] = {
 
 items[23] = {
   name = 'money',
-  description = 'Spend it wisely, if you can find somewhere to spend it.',
+  description = 'I should spend it wisely, if I could find somewhere to spend it...',
   value = 200,
   rarity = 'rare',
   action = 'drop',
@@ -258,7 +258,7 @@ items[26] = {
 
 items[27] = {
   name = 'plant',
-  description = 'A potted plant. Don\'t forget to water it.',
+  description = 'A potted plant. Sorry buddy. I need the water more than you.',
   value = 5,
   rarity = 'common',
   action = 'drop',
@@ -267,7 +267,7 @@ items[27] = {
 
 items[28] = {
   name = 'ring',
-  description = 'A nice gold ring. You try it on. You don\'t turn invisible.',
+  description = 'A nice gold ring. I tried it on. I didn\'t turn invisible.',
   value = 500,
   rarity = 'rare',
   action = 'drop',
@@ -285,7 +285,7 @@ items[29] = {
 
 items[30] = {
   name = 'shoe',
-  description = 'A sturdy shoe. Looks like it might go on your feet.',
+  description = 'A sturdy shoe. Looks like it\'ll protect my feet.',
   value = 20,
   rarity = 'uncommon',
   action = 'drop',
