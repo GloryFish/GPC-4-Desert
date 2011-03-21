@@ -63,7 +63,7 @@ function intro.enter(self, pre)
 
   local itemButton = TextButton('ITEMS')
   itemButton.action = intro.showItemviewer
-  -- intro.menu:addButton(itemButton)
+  intro.menu:addButton(itemButton)
 
   
   for i, line in ipairs(script.intro) do

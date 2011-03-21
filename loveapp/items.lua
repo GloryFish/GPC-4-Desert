@@ -132,10 +132,11 @@ items[13] = {
 
 items[14] = {
   name = 'gun',
-  description = 'A gun. Maybe I can take potshots at some scorpions, or a coyote.',
+  description = 'A gun. I bet I could hit a scorpion or a rat. I\'m awesome.',
   value = 10,
   rarity = 'uncommon',
   action = 'drop',
+  protect = {1, 3},
   image = love.graphics.newImage('resources/images/items/gun.png')
 }
 
@@ -195,10 +196,11 @@ items[20] = {
 
 items[21] = {
   name = 'bottle of pills',
-  description = 'Makes everything seem a bit nicer.',
+  description = 'Standard prescription bottle. Says "universal antivenom" on the label.',
   value = 20,
   rarity = 'uncommon',
   action = 'drop',
+  protect = {3, 4},
   image = love.graphics.newImage('resources/images/items/meds.png')
 }
 
@@ -289,6 +291,7 @@ items[30] = {
   value = 20,
   rarity = 'uncommon',
   action = 'drop',
+  protect = {2},
   image = love.graphics.newImage('resources/images/items/shoe.png')
 }
 

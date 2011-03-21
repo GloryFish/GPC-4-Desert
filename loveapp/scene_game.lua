@@ -13,6 +13,7 @@ require 'scene_dead'
 require 'cacti'
 require 'textfader'
 require 'script'
+require 'hazards'
 
 game = Gamestate.new()
 game.level = ''
@@ -44,12 +45,13 @@ function game.enter(self, pre)
   game.things = {}
   game.leavingThings = {}
   game.thingSpeed = 60
+  game.thingSpeed = 300
   game.thingHeight = 450
   
   game.cacti = Cacti()
   game.cacti.baseSpeed = self.thingSpeed
   
-  game.hazardChance = 0.1
+  game.hazardChance = 0.9
 end
 
 function game.keypressed(self, key, unicode)
@@ -104,6 +106,17 @@ function game.spawnThing(self)
     local spawnString = script.spawnStrings[math.random(#script.spawnStrings)]
     
     self.textfader:addLine(string.format(spawnString, items[thing.id].name))
+  else
+    local thing = {
+      id = hazards:getRandomId(),
+      type = 'hazard',
+      position = vector(800, 470),
+      state = 'arriving'
+    }
+    table.insert(self.things, thing)
+    local spawnString = script.spawnStrings[math.random(#script.spawnStrings)]
+    
+    self.textfader:addLine(string.format(spawnString, hazards[thing.id].name))
   end  
 end
 
@@ -150,6 +163,9 @@ function game.update(self, dt)
         else -- Let go
           thing.state = 'leaving'
         end
+      else -- Hazard hit the man
+        self.energy.amount = self.energy.amount - hazards[thing.id].damage
+        thing.state = 'leaving'
       end
     end
   end
@@ -176,7 +192,12 @@ function game.draw(self)
   self.cacti:drawBack()
   
   for i, thing in ipairs(self.things) do
-    love.graphics.draw(items[thing.id].image, 
+    local image = items[thing.id].image
+    if thing.type == 'hazard' then
+      image = hazards[thing.id].image
+    end
+    
+    love.graphics.draw(image, 
                        thing.position.x, 
                        thing.position.y, 
                        0, 

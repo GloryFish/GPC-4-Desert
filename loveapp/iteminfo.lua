@@ -10,6 +10,7 @@ require 'middleclass'
 require 'vector'
 require 'colors'
 require 'items'
+require 'hazards'
 
 ItemInfo = class('ItemInfo')
 
@@ -78,6 +79,32 @@ function ItemInfo:draw()
 
     colors.white:set()
     love.graphics.printf(item.description, self.position.x + self.padding, self.position.y + 120, self.width - self.padding * 2, 'left')
+    
+    -- Hazards
+    if item.protect ~= nil then
+      colors.black:set()
+      love.graphics.printf('protects', self.position.x + self.padding + 1, self.position.y + 300, (self.width - self.padding * 2) + 1, 'left')
+
+      colors.white:set()
+      love.graphics.printf('protects', self.position.x + self.padding, self.position.y + 300, self.width - self.padding * 2, 'left')
+      
+      
+      local imageX = self.position.x + self.padding
+      
+      for i, hazardId in ipairs(item.protect) do
+        love.graphics.draw(hazards[hazardId].image, 
+                           imageX, 
+                           self.position.y + 320, 
+                           0, 
+                           2, 
+                           2, 
+                           0, 
+                           0)
+        imageX = imageX + 36
+      end 
+      
+    end
+    
   end
 
 end
