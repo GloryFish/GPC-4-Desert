@@ -15,6 +15,7 @@ require 'fader'
 require 'menu'
 require 'textbutton'
 require 'textfader'
+require 'logo'
 require 'man'
 
 require 'script'
@@ -37,6 +38,9 @@ function intro.enter(self, pre)
   intro.fader:fadeIn()
 
   intro.textfader = TextFader(vector(love.graphics.getWidth() / 2, 530), fonts.default, colors.white)
+  
+  intro.logo = Logo()
+  intro.logo.position = vector(200, 200)
   
   intro.man = Man(vector(200, 470))
   intro.man:setState('standing')
@@ -86,9 +90,6 @@ function intro.update(self, dt)
   local _, time = math.modf(intro.elapsed / intro.period)
   
   intro.log:update(dt)
-  intro.log:addLine(string.format('Period: %i', intro.period))
-  intro.log:addLine(string.format('Time: %f', time))
-  intro.log:addLine(string.format('Elapsed: %i', self.elapsed))
   
   intro.background:update(dt, time)
   
@@ -97,7 +98,13 @@ function intro.update(self, dt)
   
   intro.man:update(dt)
   
-  if intro.elapsed > 121 and intro.startButton == nil then
+  intro.logo:update(dt)
+
+  if intro.elapsed > 121 and intro.logo.opacity == 0 then
+    intro.logo:fadeIn()
+  end
+  
+  if intro.elapsed > 123 and intro.menu.visible == false then
     intro.menu.visible = true
     intro.speed = 1
   end
@@ -127,6 +134,8 @@ function intro.draw(self)
   intro.man:draw()
   
   intro.menu:draw()
+
+  intro.logo:draw()
 
   intro.textfader:draw()
   intro.fader:draw()
