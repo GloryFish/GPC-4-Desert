@@ -20,6 +20,7 @@ require 'man'
 
 require 'script'
 require 'scene_game'
+require 'scene_help'
 require 'scene_itemviewer'
 
 intro = Gamestate.new()
@@ -52,13 +53,18 @@ function intro.enter(self, pre)
   startButton.action = intro.beginGame
   intro.menu:addButton(startButton)
 
+  local helpButton = TextButton('LEARN')
+  helpButton.action = intro.showHelp
+  intro.menu:addButton(helpButton)
+
   local endButton = TextButton('END')
   endButton.action = intro.endGame
   intro.menu:addButton(endButton)
 
   local itemButton = TextButton('ITEMS')
   itemButton.action = intro.showItemviewer
-  intro.menu:addButton(itemButton)
+  -- intro.menu:addButton(itemButton)
+
   
   for i, line in ipairs(script.intro) do
     intro.textfader:addLine(line)
@@ -123,6 +129,14 @@ function intro.endGame()
   love.event.push('q')
 end
 
+function intro.showHelp()
+  help.elapsed = intro.elapsed
+  help.background = intro.background
+  help.man = intro.man
+  help.textfader = intro.textfader
+  Gamestate.switch(help)
+end
+
 function intro.showItemviewer()
   itemviewer.elapsed = intro.elapsed
   itemviewer.background = intro.background
@@ -145,5 +159,4 @@ end
 function intro.leave(self)
   self.log = nil
   self.fader = nil
-  self.textfader = nil
 end

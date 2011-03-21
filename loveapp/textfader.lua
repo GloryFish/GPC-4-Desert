@@ -28,7 +28,12 @@ function TextFader:update(dt)
   if #self.lines > 0 then
     self.duration = self.duration + dt
   end
-  
+
+  if self.duration > self.maxduration then
+    self.duration = 0
+    table.remove(self.lines, 1)
+  end
+    
   if self.duration >= 0 and self.duration < self.fadein then -- fade in
     self.opacity = self.duration / self.fadein
   end
@@ -40,10 +45,11 @@ function TextFader:update(dt)
   if self.duration >= self.fadeout and self.duration < self.maxduration then -- fade out
     self.opacity = 1 - (self.duration - self.fadeout) / (self.maxduration - self.fadeout)
   end
-  
-  if self.duration > self.maxduration then
-    self.duration = 0
-    table.remove(self.lines, 1)
+end
+
+function TextFader:skip()
+  if #self.lines > 0 then
+    self.duration = self.maxduration + 1;
   end
 end
 
@@ -54,12 +60,20 @@ end
 function TextFader:draw(dt)
   if #self.lines > 0 then
     love.graphics.setFont(self.font)
+    local lineWidth = self.font:getWidth(self.lines[1])
+
+    love.graphics.setColor(0,
+                           0,
+                           0,
+                           self.opacity * 255)
+    love.graphics.print(self.lines[1], 
+                        (self.position.x - lineWidth / 2) + 1, 
+                        self.position.y + 1)
 
     love.graphics.setColor(self.color.r,
                            self.color.g,
                            self.color.b,
                            self.opacity * 255)
-    local lineWidth = self.font:getWidth(self.lines[1])
 
     love.graphics.print(self.lines[1], 
                         self.position.x - lineWidth / 2, 

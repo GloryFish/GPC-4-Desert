@@ -42,6 +42,7 @@ colors = {
   brown = Color(135, 113, 58),
   clear = Color(0, 0, 0, 0),
   gray = Color(44, 44, 44),
+  lightgray = Color(120, 120, 120),
   transgray = Color(44, 44, 44, 44),
   transwhite = Color(88, 88, 88, 44)
 }

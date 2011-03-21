@@ -66,13 +66,17 @@ function TextButton:draw()
   end
   
   love.graphics.setFont(font)
+  local lineWidth = font:getWidth(self.text)
+
+  colors.black:set()
+  love.graphics.print(self.text, 
+                      (self.position.x - lineWidth / 2) + 1, 
+                      self.position.y + 1)
+
   love.graphics.setColor(self.color.r,
                          self.color.g,
                          self.color.b,
                          self.color.a)
-                         
-  local lineWidth = font:getWidth(self.text)
-                         
 
   love.graphics.print(self.text, 
                       self.position.x - lineWidth / 2, 

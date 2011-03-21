@@ -6,6 +6,8 @@
 --  Copyright 2011 GloryFish.org. All rights reserved.
 -- 
 
+require 'colors'
+
 Menu = class('Menu')
 
 function Menu:initialize(pos)
@@ -45,6 +47,14 @@ end
 
 function Menu:draw()
   if self.visible then
+    love.graphics.setFont(fonts.default)
+
+    colors.black:set()
+    love.graphics.print('click to:', 181, 256)
+
+    colors.white:set()
+    love.graphics.print('click to:', 180, 255)
+    
     for i, button in ipairs(self.buttons) do
       button:draw()
     end

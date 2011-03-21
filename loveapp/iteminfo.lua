@@ -42,27 +42,42 @@ function ItemInfo:draw()
 
     -- Item name
     love.graphics.setFont(fonts.default)
+    colors.black:set()
+    love.graphics.print(item.name, self.position.x + self.padding + 1, self.position.y + self.padding + 1)
+
     local nameColor = items.colorForRarity(item.rarity)
     nameColor:set()
     love.graphics.print(item.name, self.position.x + self.padding, self.position.y + self.padding)
 
     love.graphics.setFont(fonts.small)
-    colors.white:set()
     
     -- Value
+    colors.black:set()
+    love.graphics.printf(string.format('Worth: $%i', item.value), self.position.x + self.padding + 1, self.position.y + 40 + 1, self.width - self.padding * 2, 'left')
+
+    colors.white:set()
     love.graphics.printf(string.format('Worth: $%i', item.value), self.position.x + self.padding, self.position.y + 40, self.width - self.padding * 2, 'left')
 
     -- Rarity
+    colors.black:set()
+    love.graphics.printf(string.format('Rarity: %s', item.rarity), self.position.x + self.padding + 1, self.position.y + 60 + 1, self.width - self.padding * 2, 'left')
+
+    colors.white:set()
     love.graphics.printf(string.format('Rarity: %s', item.rarity), self.position.x + self.padding, self.position.y + 60, self.width - self.padding * 2, 'left')
 
     -- Item action
+    colors.black:set()
+    love.graphics.printf(string.format('Click to %s', item.action), self.position.x + self.padding + 1, self.position.y + 90 + 1, self.width - self.padding * 2, 'left')
+
+    colors.white:set()
     love.graphics.printf(string.format('Click to %s', item.action), self.position.x + self.padding, self.position.y + 90, self.width - self.padding * 2, 'left')
 
     -- Item description
-    love.graphics.printf(item.description, self.position.x + self.padding, self.position.y + 120, self.width - self.padding * 2, 'left')
+    colors.black:set()
+    love.graphics.printf(item.description, self.position.x + self.padding + 1, self.position.y + 120, (self.width - self.padding * 2) + 1, 'left')
 
-    
-    
+    colors.white:set()
+    love.graphics.printf(item.description, self.position.x + self.padding, self.position.y + 120, self.width - self.padding * 2, 'left')
   end
 
 end

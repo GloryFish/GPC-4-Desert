@@ -12,6 +12,7 @@ require 'energy'
 require 'scene_dead'
 require 'cacti'
 require 'textfader'
+require 'script'
 
 game = Gamestate.new()
 game.level = ''
@@ -34,6 +35,7 @@ function game.enter(self, pre)
   game.iteminfo.position = vector(450, 50)
   
   game.textfader.maxduration = 7
+  game.textfader.position = vector(love.graphics.getWidth() / 2, 540)
   
   game.energy = Energy()
   game.energy.position = vector(50, 30)
@@ -44,7 +46,6 @@ function game.enter(self, pre)
   game.things = {}
   game.leavingThings = {}
   game.thingSpeed = 60
-  game.thingSpeed = 600
   game.thingHeight = 450
   
   game.hazardChance = 0.1
@@ -99,7 +100,9 @@ function game.spawnThing(self)
       state = 'arriving'
     }
     table.insert(self.things, thing)
-    self.textfader:addLine(string.format('Up ahead I see a %s', items[thing.id].name))
+    local spawnString = script.spawnStrings[math.random(#script.spawnStrings)]
+    
+    self.textfader:addLine(string.format(spawnString, items[thing.id].name))
   end  
 end
 

@@ -139,7 +139,7 @@ function Inventory:draw()
 
     -- Draw selected
     if self.selectedIndex == i then
-      colors.red:set()
+      colors.black:set()
       love.graphics.setLineWidth(4)
       love.graphics.rectangle('line', 
                               imageX - 1, 
