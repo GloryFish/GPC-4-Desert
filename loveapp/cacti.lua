@@ -25,7 +25,7 @@ function Cacti:initialize()
   }
 
   self.cacti = {}
-  self.speed = 40
+  self.baseSpeed = 40
   self.moving = true
   
   self.interval = 0
@@ -60,9 +60,9 @@ function Cacti:update(dt)
     local toRemove = {}
     for i, cactus in ipairs(self.cacti) do
       if cactus.layer == 'front' then
-        cactus.position.x = cactus.position.x - self.speed * dt
+        cactus.position.x = cactus.position.x - self.baseSpeed * dt * 2
       else
-        cactus.position.x = cactus.position.x - self.speed * dt * 0.5
+        cactus.position.x = cactus.position.x - self.baseSpeed * dt * 0.5
       end
       
       if cactus.position.x < -16 then

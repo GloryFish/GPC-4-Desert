@@ -41,12 +41,13 @@ function game.enter(self, pre)
   game.energy.position = vector(50, 30)
   game.energyLossRate = 0.01
   
-  game.cacti = Cacti()
-  
   game.things = {}
   game.leavingThings = {}
   game.thingSpeed = 60
   game.thingHeight = 450
+  
+  game.cacti = Cacti()
+  game.cacti.baseSpeed = self.thingSpeed
   
   game.hazardChance = 0.1
 end
@@ -74,7 +75,7 @@ function game.mousepressed(self, x, y, button)
       local thing = {
         id = self.inventory.selectedItemId,
         type = 'item',
-        position = vector(self.man.position.x - 8, game.thingHeight),
+        position = vector(self.man.position.x - 32, game.thingHeight),
         state = 'leaving'
       }
       table.insert(self.things, thing)
@@ -173,7 +174,6 @@ function game.draw(self)
   self.textfader:draw()
 
   self.cacti:drawBack()
-  self.man:draw()
   
   for i, thing in ipairs(self.things) do
     love.graphics.draw(items[thing.id].image, 
@@ -185,6 +185,7 @@ function game.draw(self)
                        0, 
                        0)
   end
+  self.man:draw()
   
   self.cacti:drawFront()
 end
