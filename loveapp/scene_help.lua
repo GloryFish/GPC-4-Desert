@@ -78,9 +78,18 @@ function help.draw(self)
   
   love.graphics.setFont(fonts.tiny)
   colors.black:set()
-  love.graphics.print('created by Paul Bredenberg and Jay Roberts for Game Prototype Challenge v4', 51, 571)
+  love.graphics.print('created by Paul Bredenberg and Jay Roberts for Game Prototype Challenge v4', 51, 561)
   colors.white:set()
-  love.graphics.print('created by Paul Bredenberg and Jay Roberts for Game Prototype Challenge v4', 50, 570)
+  love.graphics.print('created by Paul Bredenberg and Jay Roberts for Game Prototype Challenge v4', 50, 560)
+
+  colors.black:set()
+  love.graphics.print('music by elerya', 51, 581)
+  colors.white:set()
+  love.graphics.print('music by elerya', 50, 580)
+  
+  
+  
+  
   
 end
 
