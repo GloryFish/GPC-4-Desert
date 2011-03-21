@@ -7,6 +7,11 @@
 -- 
 
 -- Rarities: common, uncommon, rare, legendary
+-- love = {}
+-- love.graphics = {}
+-- love.graphics.newImage = function(name)
+--   return
+-- end
 
 require 'colors'
 
@@ -64,7 +69,7 @@ items[6] = {
   name = 'cheese',
   description = 'A wheel of cheese. Do people even buy these anymore? Restores a lot of energy.',
   value = 4,
-  rarity = 'common',
+  rarity = 'rare',
   action = 'use',
   energy = 0.5,
   image = love.graphics.newImage('resources/images/items/cheese.png')
@@ -346,10 +351,44 @@ function items.colorForRarity(rarity)
   end
 end
 
-function items.getRandomId()
-  -- TODO: pick item based on rarity
-  return math.random(items.count)
+function items.weightForRarity(rarity)
+  if rarity == 'common' then
+    return 65
+  elseif rarity == 'uncommon' then
+    return 25
+  elseif rarity == 'rare' then
+    return 15
+  elseif rarity == 'legendary' then
+    return 2
+  end
 end
+
+
+function items.getRandomId()
+  local threshold = math.random(0, items.totalWeight())
+  local last_choice
+  for i, item in ipairs(items) do
+    if item.rarity ~= nil then
+      threshold = threshold - items.weightForRarity(item.rarity)
+      if threshold <= 0 then 
+        return i
+      end
+      last_choice = i
+    end
+  end
+  return last_choice
+end
+
+function items.totalWeight()
+  local total = 0
+  for i, item in ipairs(items) do
+    if item.rarity ~= nil then
+      total = total + items.weightForRarity(item.rarity)
+    end
+  end
+  return total
+end
+
 for i, item in ipairs(items) do
   item.image:setFilter('nearest', 'nearest')
 end
