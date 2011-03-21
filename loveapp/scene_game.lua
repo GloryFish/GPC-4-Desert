@@ -50,10 +50,16 @@ function game.enter(self, pre)
   game.cacti = Cacti()
   game.cacti.baseSpeed = self.thingSpeed
   
-  game.hazardChance = 0.1
+  game.hazardChance = 0.05
+  game.difficulty = 1
+  
+  game.maxCycleDuration = 120
+  game.cycleTime = 0 
   
   music.game:setVolume(0.5)
   love.audio.play(music.game)
+  
+  game.log = Logger(vector(10, 10))
 end
 
 function game.keypressed(self, key, unicode)
@@ -69,6 +75,17 @@ function game.getEnergyLossRate(self)
   end
   
   return self.energyLossRate * rateMultiplier
+end
+
+function game.getHazardChance(self)
+  local _, time = math.modf(game.elapsed / game.period)
+  
+  if time < 0.5 then -- day time
+    return self.hazardChance
+  else
+    return self.hazardChance * self.difficulty
+  end
+  
 end
 
 function game.mousepressed(self, x, y, button)
@@ -112,7 +129,7 @@ function game.spawnThing(self)
     local spawnString = script.spawnStrings[math.random(#script.spawnStrings)]
 
     self.textfader:addLine(string.format(spawnString, items[thing.id].name))
-  elseif itemRoll > self.hazardChance then
+  elseif itemRoll > self:getHazardChance() then
     local thing = {
       id = items:getRandomId(),
       type = 'item',
@@ -141,6 +158,12 @@ function game.update(self, dt)
   game.elapsed = game.elapsed + dt
   local _, time = math.modf(game.elapsed / game.period)
   self.background:update(dt, time)
+
+  self.cycleTime = self.cycleTime + dt
+  if self.cycleTime > self.maxCycleDuration then
+    self.cycleTime = 0
+    self.difficult = self.difficulty + 1
+  end
 
   self.energy.amount = self.energy.amount - self:getEnergyLossRate() * dt
   self.energy:update(dt)
@@ -232,6 +255,8 @@ function game.draw(self)
   self.man:draw()
   
   self.cacti:drawFront()
+  
+  game.log:draw()
 end
 
 
