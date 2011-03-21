@@ -113,9 +113,9 @@ function game.spawnThing(self)
       state = 'arriving'
     }
     table.insert(self.things, thing)
-    local spawnString = script.spawnStrings[math.random(#script.spawnStrings)]
+    local hazardString = script.hazardStrings[math.random(#script.hazardStrings)]
     
-    self.textfader:addLine(string.format(spawnString, hazards[thing.id].name))
+    self.textfader:addLine(string.format(hazardString, hazards[thing.id].name))
   end  
 end
 

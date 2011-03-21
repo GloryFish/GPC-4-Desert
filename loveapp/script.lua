@@ -68,3 +68,10 @@ script.spawnStrings = {
   'Looks like a %s coming up.'
 }
 
+script.hazardStrings = {
+  'Uh oh. It\'s a %s',
+  'That %s looks dangerous!',
+  'There\'s a nasty %s coming up',
+  'I don\'t like the look of that %s'
+}
+
