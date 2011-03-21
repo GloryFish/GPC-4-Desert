@@ -79,26 +79,33 @@ function Inventory:itemIndexAtPosition(pos)
 end
 
 function Inventory:drawGrid()
-  colors.transgray:set()
-  
   love.graphics.setLineWidth(4)
   
- local rows = math.floor(self.maxitems / self.width)
- if self.maxitems % self.width == 0 then
+  local rows = math.floor(self.maxitems / self.width)
+  if self.maxitems % self.width == 0 then
    rows = rows - 1
- end
-  
+  end
+
   for x = 0, self.width - 1 do
     for y = 0, rows do
-      
+    
       local boxX = self.position.x + x * (self.itemSize + self.padding) * self.itemScale
       local boxY = self.position.y + y * (self.itemSize + self.padding) * self.itemScale
-      
+    
+      colors.transwhite:set()
+      love.graphics.rectangle('fill', 
+                              boxX, 
+                              boxY, 
+                              (self.itemSize + 2) * self.itemScale, 
+                              (self.itemSize + 2) * self.itemScale)
+    
+      colors.transgray:set()
       love.graphics.rectangle('line', 
                               boxX, 
                               boxY, 
                               (self.itemSize + 2) * self.itemScale, 
                               (self.itemSize + 2) * self.itemScale)
+                            
     end
   end
 end

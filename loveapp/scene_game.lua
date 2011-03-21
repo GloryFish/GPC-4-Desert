@@ -33,6 +33,7 @@ function game.enter(self, pre)
   
   game.energy = Energy()
   game.energy.position = vector(50, 30)
+  game.energyLossRate = 0.01
   
   game.things = {}
   game.leavingThings = {}
@@ -49,7 +50,7 @@ function game.keypressed(self, key, unicode)
 end
 
 function game.getEnergyLossRate(self)
-  return 0.01
+  return self.energyLossRate
 end
 
 function game.mousepressed(self, x, y, button)

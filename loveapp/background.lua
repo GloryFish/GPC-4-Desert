@@ -24,6 +24,14 @@ function Background:initialize(pos)
     radius = 370
   }
   
+  self.stars = love.graphics.newImage('resources/images/stars.png')
+  self.stars:setFilter('nearest', 'nearest')
+  self.starQuads = {
+    love.graphics.newQuad(0 * 32, 0, 32, 32, self.stars:getWidth(), self.stars:getHeight()),
+    love.graphics.newQuad(1 * 32, 0, 32, 32, self.stars:getWidth(), self.stars:getHeight()),
+    love.graphics.newQuad(2 * 32, 0, 32, 32, self.stars:getWidth(), self.stars:getHeight())
+  }
+  
   self.time = 0
 end
 
@@ -35,6 +43,16 @@ end
 
 function Background:draw()
   -- Draw night sky
+  colors.night:set()
+  love.graphics.rectangle('fill', 0, 0, love.graphics.getWidth(), love.graphics.getHeight() - 150)
+  
+  colors.white:set()
+  love.graphics.drawq(self.stars, self.starQuads[1], 70, 100, 0, 4, 4, 0, 0)
+  love.graphics.drawq(self.stars, self.starQuads[1], 205, 305, 0, 4, 4, 0, 0)
+  love.graphics.drawq(self.stars, self.starQuads[2], 650, 200, 0, 4, 4, 0, 0)
+  love.graphics.drawq(self.stars, self.starQuads[2], 350, 70, 0, 4, 4, 0, 0)
+  love.graphics.drawq(self.stars, self.starQuads[3], 200, 220, 0, 4, 4, 0, 0)
+  love.graphics.drawq(self.stars, self.starQuads[3], 425, 300, 0, 4, 4, 0, 0)
   
   
   -- Draw day sky
