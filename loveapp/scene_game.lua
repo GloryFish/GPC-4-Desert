@@ -10,6 +10,7 @@ require 'logger'
 require 'vector'
 require 'energy'
 require 'scene_dead'
+require 'cacti'
 
 game = Gamestate.new()
 game.level = ''
@@ -34,6 +35,8 @@ function game.enter(self, pre)
   game.energy = Energy()
   game.energy.position = vector(50, 30)
   game.energyLossRate = 0.01
+  
+  game.cacti = Cacti()
   
   game.things = {}
   game.leavingThings = {}
@@ -82,7 +85,7 @@ function game.spawnThing(self)
     local thing = {
       id = items:getRandomId(),
       type = 'item',
-      position = vector(800, 450),
+      position = vector(800, 470),
       state = 'arriving'
     }
     table.insert(self.things, thing)
@@ -96,6 +99,8 @@ function game.update(self, dt)
 
   self.energy.amount = self.energy.amount - self:getEnergyLossRate() * dt
   self.energy:update(dt)
+
+  self.cacti:update(dt)
 
   local mousePos = vector(love.mouse.getX(), love.mouse.getY())
   self.inventory:update(dt, mousePos)
@@ -145,10 +150,12 @@ function game.gameOver(self)
 end
 
 function game.draw(self)
-  self.background:draw(dt)
+  self.background:draw()
   self.energy:draw()
   self.inventory:draw()
   self.iteminfo:draw()
+
+  self.cacti:drawBack()
   self.man:draw()
   
   for i, thing in ipairs(self.things) do
@@ -162,7 +169,7 @@ function game.draw(self)
                        0)
   end
   
-  
+  self.cacti:drawFront()
 end
 
 

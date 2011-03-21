@@ -38,7 +38,7 @@ function intro.enter(self, pre)
 
   intro.textfader = TextFader(vector(love.graphics.getWidth() / 2, 525), fonts.default, colors.white)
   
-  intro.man = Man(vector(200, 450))
+  intro.man = Man(vector(200, 470))
   intro.man:setState('standing')
   
   intro.menu = Menu(vector(love.graphics.getWidth() / 2, 200))
