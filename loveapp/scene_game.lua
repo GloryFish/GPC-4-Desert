@@ -41,7 +41,6 @@ function game.enter(self, pre)
   game.energy = Energy()
   game.energy.position = vector(50, 360)
   game.energyLossRate = 0.01
-  game.energyLossRate = 1
   
   game.things = {}
   game.leavingThings = {}
@@ -69,7 +68,6 @@ function game.getEnergyLossRate(self)
     rateMultiplier = 3
   end
   
-  
   return self.energyLossRate * rateMultiplier
 end
 
@@ -85,8 +83,10 @@ function game.mousepressed(self, x, y, button)
       }
       table.insert(self.things, thing)
       self.inventory:removeSelectedItem()
+      love.audio.play(sounds.drop)
     elseif items[itemId].action == 'use' then
       self.energy.amount = self.energy.amount + items[itemId].energy
+      love.audio.play(sounds.energyup)
       self.inventory:removeSelectedItem()
     end
   end
@@ -175,6 +175,7 @@ function game.update(self, dt)
     elseif thing.state == 'arriving' and thing.position.x < self.man.position.x then -- At the man
       if thing.type == 'item' then
         if #self.inventory.itemIds < self.inventory.maxitems then -- Pick up
+          love.audio.play(sounds.pickup)
           self.inventory:addItem(thing.id)
           table.insert(toRemove, i)
         else -- Let go
@@ -182,6 +183,7 @@ function game.update(self, dt)
         end
       else -- Hazard hit the man
         if self.inventory:protect(thing.id) == false then
+          love.audio.play(sounds.energydown)
           self.energy.amount = self.energy.amount - hazards[thing.id].damage
         end
         

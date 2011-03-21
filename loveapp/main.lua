@@ -37,6 +37,14 @@ function love.load()
   music.title:setLooping(true)
   music.game:setLooping(true)
 
+  sounds = {
+    drop = love.audio.newSource('resources/sounds/drop.mp3', 'static'),
+    energydown = love.audio.newSource('resources/sounds/energy_down.mp3', 'static'),
+    energyup = love.audio.newSource('resources/sounds/energy_up.mp3', 'static'),
+    pickup = love.audio.newSource('resources/sounds/pickup.mp3', 'static'),
+    menuselect = love.audio.newSource('resources/sounds/select.mp3', 'static')
+  }
+  
   Gamestate.registerEvents()
   Gamestate.switch(intro)
 end

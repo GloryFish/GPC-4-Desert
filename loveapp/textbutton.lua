@@ -39,6 +39,7 @@ function TextButton:mousereleased(pos)
   self.selected = false
 
   if self:containsPosition(pos) and self.action ~= nil then
+    love.audio.play(sounds.menuselect)
     self:action()
   end
 end

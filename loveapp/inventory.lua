@@ -41,6 +41,7 @@ function Inventory:protect(hazardId)
       for j, protectId in ipairs(items[itemId].protect) do -- loop through all protections
         if protectId == hazardId then -- If a protection matches the hazard
           table.remove(self.itemIds, i) -- remove the item and return success
+          love.audio.play(sounds.drop)
           return true
         end
       end
@@ -61,8 +62,7 @@ function Inventory:getTotalValue()
   for i, itemId in ipairs(self.itemIds) do
     value = value + items[itemId].value
   end
-  -- return value
-  return 1000
+  return value
 end
 
 function Inventory:hasEnergyItem()
