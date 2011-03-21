@@ -36,7 +36,7 @@ function intro.enter(self, pre)
   intro.fader.maxduration = 10
   intro.fader:fadeIn()
 
-  intro.textfader = TextFader(vector(love.graphics.getWidth() / 2, 525), fonts.default, colors.white)
+  intro.textfader = TextFader(vector(love.graphics.getWidth() / 2, 530), fonts.default, colors.white)
   
   intro.man = Man(vector(200, 470))
   intro.man:setState('standing')
@@ -108,6 +108,7 @@ function intro.beginGame()
   game.elapsed = intro.elapsed
   game.background = intro.background
   game.man = intro.man
+  game.textfader = intro.textfader
   Gamestate.switch(game)
 end
 

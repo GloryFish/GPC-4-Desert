@@ -16,7 +16,6 @@ function TextFader:initialize(pos, font, color)
   self.font     = font
   self.color    = color
   self.lines = {}
-  self.currentline = ''
   self.opacity = 0
 
   self.maxduration = 4
@@ -26,7 +25,9 @@ function TextFader:initialize(pos, font, color)
 end
 
 function TextFader:update(dt)
-  self.duration = self.duration + dt
+  if #self.lines > 0 then
+    self.duration = self.duration + dt
+  end
   
   if self.duration >= 0 and self.duration < self.fadein then -- fade in
     self.opacity = self.duration / self.fadein
@@ -42,11 +43,7 @@ function TextFader:update(dt)
   
   if self.duration > self.maxduration then
     self.duration = 0
-    
-    self.currentline = table.remove(self.lines, 1)
-    if self.currentline == nil then
-      self.currentline = ''
-    end
+    table.remove(self.lines, 1)
   end
 end
 
@@ -55,15 +52,17 @@ function TextFader:addLine(line)
 end
 
 function TextFader:draw(dt)
-  love.graphics.setFont(self.font)
-  
-  love.graphics.setColor(self.color.r,
-                         self.color.g,
-                         self.color.b,
-                         self.opacity * 255)
-  local lineWidth = self.font:getWidth(self.currentline)
+  if #self.lines > 0 then
+    love.graphics.setFont(self.font)
 
-  love.graphics.print(self.currentline, 
-                      self.position.x - lineWidth / 2, 
-                      self.position.y)
+    love.graphics.setColor(self.color.r,
+                           self.color.g,
+                           self.color.b,
+                           self.opacity * 255)
+    local lineWidth = self.font:getWidth(self.lines[1])
+
+    love.graphics.print(self.lines[1], 
+                        self.position.x - lineWidth / 2, 
+                        self.position.y)
+  end
 end

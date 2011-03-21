@@ -11,6 +11,7 @@ require 'vector'
 require 'energy'
 require 'scene_dead'
 require 'cacti'
+require 'textfader'
 
 game = Gamestate.new()
 game.level = ''
@@ -32,6 +33,8 @@ function game.enter(self, pre)
   game.iteminfo = ItemInfo()
   game.iteminfo.position = vector(450, 50)
   
+  game.textfader.maxduration = 7
+  
   game.energy = Energy()
   game.energy.position = vector(50, 30)
   game.energyLossRate = 0.01
@@ -40,7 +43,7 @@ function game.enter(self, pre)
   
   game.things = {}
   game.leavingThings = {}
-  game.thingSpeed = 300
+  game.thingSpeed = 60
   game.thingHeight = 450
   
   game.hazardChance = 0.1
@@ -89,6 +92,7 @@ function game.spawnThing(self)
       state = 'arriving'
     }
     table.insert(self.things, thing)
+    self.textfader:addLine(string.format('Up ahead I see a %s', items[thing.id].name))
   end  
 end
 
@@ -106,6 +110,8 @@ function game.update(self, dt)
   self.inventory:update(dt, mousePos)
   self.iteminfo:update(dt)
   self.iteminfo:setItemId(self.inventory.selectedItemId)
+  
+  self.textfader:update(dt)
   
   self.man:update(dt)
   
@@ -154,6 +160,7 @@ function game.draw(self)
   self.energy:draw()
   self.inventory:draw()
   self.iteminfo:draw()
+  self.textfader:draw()
 
   self.cacti:drawBack()
   self.man:draw()
