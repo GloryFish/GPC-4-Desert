@@ -41,6 +41,7 @@ function game.enter(self, pre)
   game.energy = Energy()
   game.energy.position = vector(50, 360)
   game.energyLossRate = 0.01
+  game.energyLossRate = 1
   
   game.things = {}
   game.leavingThings = {}
@@ -198,6 +199,7 @@ function game.gameOver(self)
   dead.elapsed = game.elapsed
   dead.background = game.background
   dead.man = game.man
+  dead.finalscore = self.inventory:getTotalValue()
   Gamestate.switch(dead)
 end
 

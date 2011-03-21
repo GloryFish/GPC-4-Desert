@@ -14,6 +14,7 @@ function Menu:initialize(pos)
   self.position = pos
   self.buttons = {}
   self.visible = true
+  self.showprompt = true
 end
 
 function Menu:mousepressed(pos)
@@ -47,13 +48,15 @@ end
 
 function Menu:draw()
   if self.visible then
-    love.graphics.setFont(fonts.default)
+    if self.showprompt then
+      love.graphics.setFont(fonts.default)
 
-    colors.black:set()
-    love.graphics.print('click to:', 181, 266)
+      colors.black:set()
+      love.graphics.print('click to:', 181, 266)
 
-    colors.white:set()
-    love.graphics.print('click to:', 180, 265)
+      colors.white:set()
+      love.graphics.print('click to:', 180, 265)
+    end
     
     for i, button in ipairs(self.buttons) do
       button:draw()
