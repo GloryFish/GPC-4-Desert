@@ -35,7 +35,7 @@ items[2] = {
 items[3] = {
   name = 'book',
   description = 'An old book. Contains words of wisdom, or poetry, or something.',
-  value = 1,
+  value = 10,
   rarity = 'common',
   action = 'drop',
   image = love.graphics.newImage('resources/images/items/book.png')
@@ -44,7 +44,7 @@ items[3] = {
 items[4] = {
   name = 'boombox',
   description = 'Pump up the jam. One singular jam.',
-  value = 1,
+  value = 30,
   rarity = 'common',
   action = 'drop',
   image = love.graphics.newImage('resources/images/items/boombox.png')
@@ -52,7 +52,7 @@ items[4] = {
 
 items[5] = {
   name = 'broccoli',
-  description = 'A hunk of broccoli. Uncooked.',
+  description = 'A hunk of broccoli. Uncooked. Will restor a tiny amount of energy.',
   value = 1,
   rarity = 'common',
   action = 'use',
@@ -62,26 +62,28 @@ items[5] = {
 
 items[6] = {
   name = 'cheese',
-  description = 'A wheel of cheese. Do people even buy these anymore?',
-  value = 1,
+  description = 'A wheel of cheese. Do people even buy these anymore? Restores a lot of energy.',
+  value = 4,
   rarity = 'common',
-  action = 'drop',
+  action = 'use',
+  energy = 0.5,
   image = love.graphics.newImage('resources/images/items/cheese.png')
 }
 
 items[7] = {
   name = 'chicken',
-  description = 'A whole roasted chicken cooked rotisserie style.',
-  value = 1,
+  description = 'A whole roasted chicken cooked rotisserie style. Restores some energy.',
+  value = 6,
   rarity = 'common',
-  action = 'drop',
+  action = 'use',
+  energy = 0.25,
   image = love.graphics.newImage('resources/images/items/chicken.png')
 }
 
 items[8] = {
   name = 'cap',
-  description = 'A stylish blue baseball cap. To impress my... well, there\'s no one out here to impress, is there?',
-  value = 5,
+  description = 'A collectible baseball cap. To impress my... well, there\'s no one out here to impress, is there?',
+  value = 45,
   rarity = 'rare',
   action = 'drop',
   image = love.graphics.newImage('resources/images/items/cap.png')
@@ -89,45 +91,48 @@ items[8] = {
 
 items[9] = {
   name = 'candybar',
-  description = 'A delicious chocolaty treat. Better not spoil my dinner!',
-  value = 3,
+  description = 'A delicious chocolaty treat. Better not spoil my dinner! restores some energy.',
+  value = 10,
   rarity = 'uncommon',
-  action = 'drop',
+  action = 'use',
+  energy = 0.1,
   image = love.graphics.newImage('resources/images/items/candybar.png')
 }
 
 items[10] = {
   name = 'cake',
-  description = 'Baked to perfection! It\'s a tad salty... That\'s weird.',
+  description = 'Baked to perfection! It\'s a tad salty... That\'s weird. Restores some energy.',
   value = 3,
   rarity = 'uncommon',
-  action = 'drop',
+  action = 'use',
+  energy = 0.20,
   image = love.graphics.newImage('resources/images/items/cakeslice.png')
 }
 
 items[11] = {
   name = 'cell phone',
   description = 'No bars. Figures. The Symbian interface is a little wonky too.',
-  value = 1,
-  rarity = 'common',
+  value = 55,
+  rarity = 'uncommon',
   action = 'drop',
   image = love.graphics.newImage('resources/images/items/cell.png')
 }
 
 items[12] = {
   name = 'bag of chips',
-  description = 'BBQ potato chips! Someone left the bag open though, so they\'re kind of stale.',
+  description = 'BBQ potato chips! Someone left the bag open though, so they\'re kind of stale. Restores a bit of energy.',
   value = 1,
   rarity = 'common',
-  action = 'drop',
+  action = 'use',
+  energy = 0.1,
   image = love.graphics.newImage('resources/images/items/chips.png')
 }
 
 items[13] = {
   name = 'clock',
-  description = 'A bell ringer alarm clock. A pleasing red color.',
-  value = 1,
-  rarity = 'common',
+  description = 'An antique bell-ringer alarm clock. A pleasing red color.',
+  value = 67,
+  rarity = 'rare',
   action = 'drop',
   image = love.graphics.newImage('resources/images/items/clock.png')
 }
@@ -135,7 +140,7 @@ items[13] = {
 items[14] = {
   name = 'gun',
   description = 'A gun. I bet I could hit a scorpion or a rat. I\'m awesome.',
-  value = 10,
+  value = 9,
   rarity = 'uncommon',
   action = 'drop',
   protect = {1, 3},
@@ -144,17 +149,18 @@ items[14] = {
 
 items[15] = {
   name = 'hook',
-  description = 'Oh! A delightful novelty hook hand! What fun!',
-  value = 5,
+  description = 'Oh! A delightful novelty hook hand! What fun! I could use it to fling a snake away.',
+  value = 75,
   rarity = 'uncommon',
   action = 'drop',
+  protect = {4},
   image = love.graphics.newImage('resources/images/items/hook.png')
 }
 
 items[16] = {
   name = 'pair of glasses',
   description = 'Everything comes into focus...I\'m lost in a desert.',
-  value = 15,
+  value = 150,
   rarity = 'uncommon',
   action = 'drop',
   image = love.graphics.newImage('resources/images/items/glasses.png')
@@ -163,7 +169,7 @@ items[16] = {
 items[17] = {
   name = 'laptop',
   description = 'A shiny new MacBook Pro. No Wifi networks are available.',
-  value = 200,
+  value = 300,
   rarity = 'rare',
   action = 'drop',
   image = love.graphics.newImage('resources/images/items/laptop.png')
@@ -172,8 +178,8 @@ items[17] = {
 items[18] = {
   name = 'lunch',
   description = 'This appears to be Jay\'s lunch. Who\'s Jay?',
-  value = 1000,
-  rarity = 'rare',
+  value = 1500,
+  rarity = 'legendary',
   action = 'drop',
   image = love.graphics.newImage('resources/images/items/lunch.png')
 }
@@ -181,7 +187,7 @@ items[18] = {
 items[19] = {
   name = 'moose',
   description = 'A mounted moose head. This seems useful.',
-  value = 100,
+  value = 375,
   rarity = 'rare',
   action = 'drop',
   image = love.graphics.newImage('resources/images/items/moose.png')
@@ -190,7 +196,7 @@ items[19] = {
 items[20] = {
   name = 'liquor',
   description = 'This might be a good thing, or a very bad thing.',
-  value = 20,
+  value = 93,
   rarity = 'uncommon',
   action = 'drop',
   image = love.graphics.newImage('resources/images/items/liquor.png')
@@ -199,7 +205,7 @@ items[20] = {
 items[21] = {
   name = 'bottle of pills',
   description = 'Standard prescription bottle. Says "universal antivenom" on the label.',
-  value = 20,
+  value = 10,
   rarity = 'uncommon',
   action = 'drop',
   protect = {3, 4},
@@ -218,7 +224,7 @@ items[22] = {
 items[23] = {
   name = 'money',
   description = 'I should spend it wisely, if I could find somewhere to spend it...',
-  value = 200,
+  value = 404,
   rarity = 'rare',
   action = 'drop',
   image = love.graphics.newImage('resources/images/items/money.png')
@@ -226,8 +232,8 @@ items[23] = {
 
 items[24] = {
   name = 'cup',
-  description = 'A red plastic party cup. This would look good with booze in it.',
-  value = 20,
+  description = 'A red plastic party cup. Woth more thani tlooks apparently. This would look good with booze in it.',
+  value = 80,
   rarity = 'uncommon',
   action = 'drop',
   image = love.graphics.newImage('resources/images/items/partycup.png')
@@ -236,7 +242,7 @@ items[24] = {
 items[25] = {
   name = 'hat',
   description = 'A wild and crazy party hat.',
-  value = 20,
+  value = 30,
   rarity = 'uncommon',
   action = 'drop',
   image = love.graphics.newImage('resources/images/items/partyhat.png')
@@ -245,7 +251,7 @@ items[25] = {
 items[26] = {
   name = 'phone',
   description = 'Ring ring! Hello? Who is it? Oh that\'s right, nobody.',
-  value = 30,
+  value = 57,
   rarity = 'uncommon',
   action = 'drop',
   image = love.graphics.newImage('resources/images/items/phone.png')
@@ -263,7 +269,7 @@ items[26] = {
 items[27] = {
   name = 'plant',
   description = 'A potted plant. Sorry buddy. I need the water more than you.',
-  value = 5,
+  value = 17,
   rarity = 'common',
   action = 'drop',
   image = love.graphics.newImage('resources/images/items/plant.png')
@@ -280,20 +286,21 @@ items[28] = {
 
 items[29] = {
   name = 'rock',
-  description = 'Wow. A rock. Amazing.',
+  description = 'Wow. A rock. Amazing. Could probanly fill a hole with it.',
   value = 1,
   rarity = 'common',
   action = 'drop',
+  protect = {2},
   image = love.graphics.newImage('resources/images/items/rock.png')
 }
 
 items[30] = {
   name = 'shoe',
   description = 'A sturdy shoe. Looks like it\'ll protect my feet.',
-  value = 20,
-  rarity = 'uncommon',
+  value = 10,
+  rarity = 'common',
   action = 'drop',
-  protect = {2},
+  protect = {2, 3},
   image = love.graphics.newImage('resources/images/items/shoe.png')
 }
 
@@ -303,7 +310,7 @@ items[31] = {
   value = 20,
   rarity = 'uncommon',
   action = 'use',
-  energy = 0.1,
+  energy = 0.25,
   image = love.graphics.newImage('resources/images/items/soda.png')
 }
 
