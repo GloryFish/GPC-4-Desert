@@ -44,6 +44,7 @@ function game.enter(self, pre)
   game.things = {}
   game.leavingThings = {}
   game.thingSpeed = 60
+  game.thingSpeed = 600
   game.thingHeight = 450
   
   game.hazardChance = 0.1
@@ -56,7 +57,13 @@ function game.keypressed(self, key, unicode)
 end
 
 function game.getEnergyLossRate(self)
-  return self.energyLossRate
+  local rateMultiplier = 1
+  if #self.inventory.itemIds >= self.inventory.maxitems then
+    rateMultiplier = 3
+  end
+  
+  
+  return self.energyLossRate * rateMultiplier
 end
 
 function game.mousepressed(self, x, y, button)

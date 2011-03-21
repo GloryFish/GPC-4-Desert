@@ -99,7 +99,11 @@ function Inventory:drawGrid()
                               (self.itemSize + 2) * self.itemScale, 
                               (self.itemSize + 2) * self.itemScale)
     
-      colors.transgray:set()
+      if #self.itemIds < self.maxitems then
+        colors.transgray:set()
+      else
+        colors.red:set()
+      end
       love.graphics.rectangle('line', 
                               boxX, 
                               boxY, 
