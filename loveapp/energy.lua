@@ -24,9 +24,10 @@ function Energy:update(dt)
     self.amount = 0
   end
 
-  if self.currentAmount < 0 then
-    self.currentAmount = 0
+  if self.amount > 1 then
+    self.amount = 1
   end
+
   self.currentAmount = self.amount
 end
 

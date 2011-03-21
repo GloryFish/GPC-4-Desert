@@ -17,7 +17,7 @@ function ItemInfo:initialize()
   self.itemId = 1
   self.position = vector(0, 0)
   self.width = 300
-  self.height = 380
+  self.height = 376
   self.itemId = 0
   self.padding = 10
 end
@@ -55,8 +55,12 @@ function ItemInfo:draw()
     -- Rarity
     love.graphics.printf(string.format('Rarity: %s', item.rarity), self.position.x + self.padding, self.position.y + 60, self.width - self.padding * 2, 'left')
 
+    -- Item action
+    love.graphics.printf(string.format('Click to %s', item.action), self.position.x + self.padding, self.position.y + 90, self.width - self.padding * 2, 'left')
+
     -- Item description
-    love.graphics.printf(item.description, self.position.x + self.padding, self.position.y + 90, self.width - self.padding * 2, 'left')
+    love.graphics.printf(item.description, self.position.x + self.padding, self.position.y + 120, self.width - self.padding * 2, 'left')
+
     
     
   end

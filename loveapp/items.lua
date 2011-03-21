@@ -17,6 +17,8 @@ items[1] = {
   description = 'A refreshing beverage. Restores some energy.',
   value = 1,
   rarity = 'common',
+  action = 'use',
+  energy = 0.25,
   image = love.graphics.newImage('resources/images/items/water.png')
 }
 
@@ -25,6 +27,7 @@ items[2] = {
   description = 'A crisp apple. It is red and delicious,',
   value = 1,
   rarity = 'common',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/apple.png')
 }
 
@@ -33,6 +36,7 @@ items[3] = {
   description = 'An old book. Contains words of wisdom, or poetry, or something.',
   value = 1,
   rarity = 'common',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/book.png')
 }
 
@@ -41,6 +45,7 @@ items[4] = {
   description = 'Pump up the jam. One singular jam.',
   value = 1,
   rarity = 'common',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/boombox.png')
 }
 
@@ -49,6 +54,7 @@ items[5] = {
   description = 'A hunk of broccoli. Uncooked.',
   value = 1,
   rarity = 'common',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/broccoli.png')
 }
 
@@ -57,6 +63,7 @@ items[6] = {
   description = 'A wheel of cheese. Do people even buy these anymore?',
   value = 1,
   rarity = 'common',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/cheese.png')
 }
 
@@ -65,6 +72,7 @@ items[7] = {
   description = 'A whole roasted chicken cooked rotisserie style.',
   value = 1,
   rarity = 'common',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/chicken.png')
 }
 
@@ -73,6 +81,7 @@ items[8] = {
   description = 'A stylish blue baseball cap. Impress your... well, there\'s no one out here to impress, is there?',
   value = 5,
   rarity = 'rare',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/cap.png')
 }
 
@@ -81,6 +90,7 @@ items[9] = {
   description = 'A delicious chocolaty treat. Don\'t spoil your dinner!',
   value = 3,
   rarity = 'uncommon',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/candybar.png')
 }
 
@@ -89,6 +99,7 @@ items[10] = {
   description = 'Baked to perfection! It\'s a tad salty... That\'s weird.',
   value = 3,
   rarity = 'uncommon',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/cakeslice.png')
 }
 
@@ -97,6 +108,7 @@ items[11] = {
   description = 'No bars. Figures. The Symbian interface is a little wonky too.',
   value = 1,
   rarity = 'common',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/cell.png')
 }
 
@@ -105,6 +117,7 @@ items[12] = {
   description = 'BBQ potato chips! Someone left the bag open though, so they\'re kind of stale.',
   value = 1,
   rarity = 'common',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/chips.png')
 }
 
@@ -113,6 +126,7 @@ items[13] = {
   description = 'A bell ringer alarm clock. A pleasing red color.',
   value = 1,
   rarity = 'common',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/clock.png')
 }
 
@@ -121,6 +135,7 @@ items[14] = {
   description = 'A gun. Maybe you can take potshots at some scorpions, or a coyote.',
   value = 10,
   rarity = 'uncommon',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/gun.png')
 }
 
@@ -129,6 +144,7 @@ items[15] = {
   description = 'Oh! A delightful novelty hook hand! What fun!',
   value = 5,
   rarity = 'uncommon',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/hook.png')
 }
 
@@ -137,6 +153,7 @@ items[16] = {
   description = 'Everything comes into focus... you\'re lost in a desert.',
   value = 15,
   rarity = 'uncommon',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/glasses.png')
 }
 
@@ -145,6 +162,7 @@ items[17] = {
   description = 'A shiny new MacBook Pro. No Wifi networks are available.',
   value = 200,
   rarity = 'rare',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/laptop.png')
 }
 
@@ -153,6 +171,7 @@ items[18] = {
   description = 'This appears to be Jay\'s lunch. Who\'s Jay?',
   value = 1000,
   rarity = 'rare',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/lunch.png')
 }
 
@@ -161,6 +180,7 @@ items[19] = {
   description = 'A mounted moose head. This seems useful.',
   value = 100,
   rarity = 'rare',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/moose.png')
 }
 
@@ -169,6 +189,7 @@ items[20] = {
   description = 'This might be a good thing, or a very bad thing.',
   value = 20,
   rarity = 'uncommon',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/liquor.png')
 }
 
@@ -177,6 +198,7 @@ items[21] = {
   description = 'Makes everything seem a bit nicer.',
   value = 20,
   rarity = 'uncommon',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/meds.png')
 }
 
@@ -185,6 +207,7 @@ items[22] = {
   description = 'A very dull log.',
   value = 1,
   rarity = 'common',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/log.png')
 }
 
@@ -193,6 +216,7 @@ items[23] = {
   description = 'Spend it wisely, if you can find somewhere to spend it.',
   value = 200,
   rarity = 'rare',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/money.png')
 }
 
@@ -201,6 +225,7 @@ items[24] = {
   description = 'A red plastic party cup. This would look good with booze in it.',
   value = 20,
   rarity = 'uncommon',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/partycup.png')
 }
 
@@ -209,6 +234,7 @@ items[25] = {
   description = 'A wild and crazy party hat.',
   value = 20,
   rarity = 'uncommon',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/partyhat.png')
 }
 
@@ -217,6 +243,7 @@ items[26] = {
   description = 'Ring ring! Hello? Who is it? Oh that\'s right, nobody.',
   value = 30,
   rarity = 'uncommon',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/phone.png')
 }
 
@@ -225,6 +252,7 @@ items[26] = {
   description = 'This appears to be a photo of a dog or a monkey.',
   value = 40,
   rarity = 'uncommon',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/photo.png')
 }
 
@@ -233,6 +261,7 @@ items[27] = {
   description = 'A potted plant. Don\'t forget to water it.',
   value = 5,
   rarity = 'common',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/plant.png')
 }
 
@@ -241,6 +270,7 @@ items[28] = {
   description = 'A nice gold ring. You try it on. You don\'t turn invisible.',
   value = 500,
   rarity = 'rare',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/ring.png')
 }
 
@@ -249,6 +279,7 @@ items[29] = {
   description = 'Wow. A rock. Amazing.',
   value = 1,
   rarity = 'common',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/rock.png')
 }
 
@@ -257,14 +288,17 @@ items[30] = {
   description = 'A sturdy shoe. Looks like it might go on your feet.',
   value = 20,
   rarity = 'uncommon',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/shoe.png')
 }
 
 items[31] = {
   name = 'soda',
-  description = 'I did not know they still made Tab.',
+  description = 'I did not know they still made Tab. Restores a small amount of energy.',
   value = 20,
   rarity = 'uncommon',
+  action = 'use',
+  energy = 0.1,
   image = love.graphics.newImage('resources/images/items/soda.png')
 }
 
@@ -273,6 +307,7 @@ items[32] = {
   description = 'Just a nice tumbleweed. Look at it tumblin\'.',
   value = 1,
   rarity = 'common',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/tumbleweed.png')
 }
 
@@ -281,6 +316,7 @@ items[33] = {
   description = 'Uh oh.',
   value = 200,
   rarity = 'rare',
+  action = 'drop',
   image = love.graphics.newImage('resources/images/items/moonshine.png')
 }
 
