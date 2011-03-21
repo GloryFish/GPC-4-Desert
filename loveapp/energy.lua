@@ -40,6 +40,9 @@ function Energy:draw()
     colors.red:set()
   end
   
-  
   love.graphics.rectangle('fill', self.position.x, self.position.y, self.width * self.currentAmount, 8)
+
+  colors.transgray:set()
+  love.graphics.rectangle('line', self.position.x - 2, self.position.y - 2, self.width + 4, 13)
+
 end

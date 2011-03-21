@@ -6,13 +6,6 @@
 --  Copyright 2011 GloryFish.org. All rights reserved.
 -- 
 
--- Rarities: common, uncommon, rare, legendary
--- love = {}
--- love.graphics = {}
--- love.graphics.newImage = function(name)
---   return
--- end
-
 require 'colors'
 
 items = {}
@@ -362,7 +355,6 @@ function items.weightForRarity(rarity)
     return 2
   end
 end
-
 
 function items.getRandomId()
   local threshold = math.random(0, items.totalWeight())
