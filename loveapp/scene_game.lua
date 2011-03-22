@@ -162,7 +162,7 @@ function game.update(self, dt)
   self.cycleTime = self.cycleTime + dt
   if self.cycleTime > self.maxCycleDuration then
     self.cycleTime = 0
-    self.difficult = self.difficulty + 1
+    self.difficulty = self.difficulty + 1
   end
 
   self.energy.amount = self.energy.amount - self:getEnergyLossRate() * dt

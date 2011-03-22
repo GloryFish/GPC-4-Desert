@@ -162,9 +162,6 @@ function help.draw(self)
     love.graphics.draw(items[15].image, love.graphics.getWidth() / 2, 360, 0, 4, 4, 8, 8)
     love.graphics.draw(items[21].image, love.graphics.getWidth() / 2 + 88, 360, 0, 4, 4, 8, 8)
   end
-  
-  
-  self.logger:draw()
 end
 
 function help.quit(self)
