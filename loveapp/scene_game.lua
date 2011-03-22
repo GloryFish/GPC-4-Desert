@@ -51,7 +51,7 @@ function game.enter(self, pre)
   game.cacti.baseSpeed = self.thingSpeed
   
   game.hazardChance = 0.05
-  game.difficulty = 1
+  game.difficulty = 2
   
   game.maxCycleDuration = 120
   game.cycleTime = 0 

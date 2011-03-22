@@ -32,7 +32,7 @@ items[2] = {
 
 items[3] = {
   name = 'book',
-  description = 'An old book. Contains words of wisdom, or poetry, or something.',
+  description = 'An old book.  Contains words of wisdom, or poems, or something.',
   value = 10,
   rarity = 'common',
   action = 'drop',
@@ -230,7 +230,7 @@ items[23] = {
 
 items[24] = {
   name = 'cup',
-  description = 'A red plastic party cup. Woth more thani tlooks apparently. This would look good with booze in it.',
+  description = 'A red plastic party cup. Worth more than it looks apparently.',
   value = 80,
   rarity = 'uncommon',
   action = 'drop',
@@ -350,9 +350,9 @@ function items.weightForRarity(rarity)
   elseif rarity == 'uncommon' then
     return 25
   elseif rarity == 'rare' then
-    return 15
+    return 10
   elseif rarity == 'legendary' then
-    return 2
+    return 1
   end
 end
 
