@@ -8,6 +8,12 @@ Desert Loot is a game that was created for the [Game Prototype Challenge v4](htt
 
 The themes were "Burden" and "Sunshine".
 
+## Screenshots
+
+[Title](http://gloryfish.s3.amazonaws.com/games/desertloot/title.png)
+
+[Gameplay](http://gloryfish.s3.amazonaws.com/games/desertloot/gameplay.png)
+
 ## Credits
 
 Art: [Paul Bredenberg](http://paulbredenberg.com/)
