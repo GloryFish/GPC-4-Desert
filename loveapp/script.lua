@@ -51,13 +51,15 @@ script.help[4] = {
 script.help[5] = {
   'But it\'s difficult.',
   'Some things will hurt me.',
-  'I need protection.',
-  'I should keep things that will save me.'
+  'It\'s even worse at night.',
+  'I should keep things that will protect me.'
 }
 
 script.help[6] = {
+  '',
   'I should get going.',
-  'I don\'t want to be late.'
+  'I don\'t want to be late.',
+  ''
 }
 
 script.spawnStrings = {

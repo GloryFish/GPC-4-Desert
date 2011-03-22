@@ -9,9 +9,11 @@
 require 'vector'
 require 'colors'
 require 'items'
+require 'hazards'
 require 'inventory'
 require 'iteminfo'
 require 'script'
+require 'logger'
 
 help = Gamestate.new()
 
@@ -21,9 +23,19 @@ function help.enter(self, pre)
   self.textfader.maxduration = 3
   self.textfader.position = vector(love.graphics.getWidth() / 2, 300)
   
+  self.showWater = false
+  self.showStuff = false
+  self.showWeirdStuff = false
+  self.showHazards = false
+  self.showProtect = false
+  
+  self.duration = 0
+  
   self.scriptIndex = 0
   
   self:loadNextScript()
+  
+  self.logger = Logger(vector(50, 50))
 end
 
 function help.loadNextScript(self)
@@ -49,6 +61,7 @@ function help.keypressed(self, key, unicode)
 end
 
 function help.mousepressed(self, x, y, button)
+  self.duration = self.duration + (self.textfader.maxduration - self.textfader.duration)
   self.textfader:skip()
 end
 
@@ -56,6 +69,9 @@ function help.mousereleased(self, x, y, button)
 end
 
 function help.update(self, dt)
+  self.logger:update(dt)
+  self.duration = self.duration + dt
+  self.logger:addLine(string.format('time: %f', self.duration))
   self.elapsed = self.elapsed + dt
   local _, time = math.modf(self.elapsed / self.period)
 
@@ -69,6 +85,40 @@ function help.update(self, dt)
       self:quit()
     end
   end
+  
+  if self.duration > 3.5 then
+    self.showWater = true
+  end
+  if self.duration > 12 then
+    self.showWater = false
+  end
+
+  if self.duration > 18.5 then
+    self.showStuff = true
+  end
+  if self.duration > 21 then
+    self.showWeirdStuff = true
+  end
+  if self.duration > 33 then
+    self.showWeirdStuff = false
+  end
+  if self.duration > 36 then
+    self.showStuff = false
+  end
+
+  if self.duration > 51 then
+    self.showHazards = true
+  end
+
+  if self.duration > 57.5 then
+    self.showProtect = true
+  end
+
+  if self.duration > 60.5 then
+    self.showHazards = false
+    self.showProtect = false
+  end
+  
 end
 
 function help.draw(self)
@@ -87,10 +137,34 @@ function help.draw(self)
   colors.white:set()
   love.graphics.print('music by elerya', 50, 580)
   
+  if self.showWater then
+    love.graphics.draw(items[1].image, love.graphics.getWidth() / 2, 250, 0, 4, 4, 8, 8)
+  end
+
+  if self.showStuff then
+    love.graphics.draw(items[22].image, love.graphics.getWidth() / 2 - 88, 250, 0, 4, 4, 8, 8)
+    love.graphics.draw(items[29].image, love.graphics.getWidth() / 2, 250, 0, 4, 4, 8, 8)
+  end
+
+  if self.showWeirdStuff then
+    love.graphics.draw(items[4].image, love.graphics.getWidth() / 2 + 88, 250, 0, 4, 4, 8, 8)
+  end
+
+  if self.showHazards then
+    love.graphics.draw(hazards[1].image, love.graphics.getWidth() / 2 - 108, 250, 0, 4, 4, 8, 8)
+    love.graphics.draw(hazards[2].image, love.graphics.getWidth() / 2 - 38, 250, 0, 4, 4, 8, 8)
+    love.graphics.draw(hazards[3].image, love.graphics.getWidth() / 2 + 38, 250, 0, 4, 4, 8, 8)
+    love.graphics.draw(hazards[4].image, love.graphics.getWidth() / 2 + 108, 250, 0, 4, 4, 8, 8)
+  end
+
+  if self.showProtect then
+    love.graphics.draw(items[14].image, love.graphics.getWidth() / 2 - 88, 360, 0, 4, 4, 8, 8)
+    love.graphics.draw(items[15].image, love.graphics.getWidth() / 2, 360, 0, 4, 4, 8, 8)
+    love.graphics.draw(items[21].image, love.graphics.getWidth() / 2 + 88, 360, 0, 4, 4, 8, 8)
+  end
   
   
-  
-  
+  self.logger:draw()
 end
 
 function help.quit(self)
