@@ -2,51 +2,26 @@
 
 A man walks along the desert carrying a heavy burden. The sun beats down. Where is going? Where is he coming from? He seems to be collecting a lot of stuff.
 
-## Gameplay:
+## About
 
-The Man walks constantly. The sun rises and sets. Items appear and he collects them. The items fill an inventory.
+Desert Loot is a game that was created for the [Game Prototype Challenge v4](http://gameprototypechallenge.com/post/3856159295/gpcv4-themes) event.
 
-The player can choose to leave an item lone or perform an action on the item. Items will be consumed or dropped.
+The themes were "Burden" and "Sunshine".
 
-The Man has an energy meter. If it runs out, he collapses.
+## Credits
 
-Items have weight. The more items carried the slower the player moves, the more energy he expends.
+Art: [Paul Bredenberg](http://paulbredenberg.com/)
 
-Items have value. The value is shown as a dollar amount. The player must choose to keep an item based on weight/value/usefulness.
+Programming: [Jay Roberts](http://gloryfish.org)
 
-Ex:
+Music: [elerya](http://opengameart.org/user/811)
 
-WATER has LOW value, LOW weight, high usefulness and it is COMMON
-GIANT ROCK has LOW value, HIGH weight, no usefulness, and is COMMON
-GOLD RING has HIGH VALUE, LOW weight, no usefulness and is RARE
-STURDY SHOE has MEDIUM value, LOW weight, HIHG usefulness and is UNCOMMON
+ - "Mektaba"
+ - "Nomads"
 
+Uses the excellent [LÖVE](http://love2d.org) framework.
 
-Sometimes a HAZARD appears. Having the right item in your inventory when the hazard appears will prevent energy loss from the hazard and the item will be consumed.
+Uses kikito's elegant [Middleclass](https://github.com/kikito/middleclass)
 
+Uses vrld's _can't live without it_ [HUMP Library](https://github.com/vrld/hump)
 
-Some hazards:
-
-PIT - 
-SPIKES - Protective footwear
-BIRD - Protective headwear
-
-
-Items:
-
-
-WATER
-FOOD
-SHOES
-MONEY
-PHOTO
-BIG ROCK
-LOG
-TUMBLEWEED
-CACTUS
-GUN
-...
-
-Colors
-
-Brown, grey, red.
