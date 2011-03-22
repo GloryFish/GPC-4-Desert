@@ -14,7 +14,7 @@ require 'scene_intro'
 require 'logger'
 
 function love.load()
-  love.graphics.setCaption('Unrequited by Jay Roberts')
+  love.graphics.setCaption('Desert Loot')
 
   -- Seed random
   local seed = os.time()
