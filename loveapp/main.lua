@@ -30,8 +30,8 @@ function love.load()
   }
 
   music = {
-    title = love.audio.newSource('resources/music/mektaba.mp3', 'stream'),
-    game = love.audio.newSource('resources/music/nomads.mp3', 'stream'),
+    title = love.audio.newSource(love.sound.newDecoder('resources/music/mektaba.mp3', 512), 'stream'),
+    game = love.audio.newSource(love.sound.newDecoder('resources/music/nomads.mp3', 512), 'stream'),
   }
   
   music.title:setLooping(true)
