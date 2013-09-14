@@ -1,10 +1,10 @@
--- 
+--
 --  conf.lua
 --  ExperimentalGameplayProject-Feb-2011
---  
+--
 --  Created by Jay Roberts on 2011-02-02.
 --  Copyright 2011 GloryFish.org. All rights reserved.
--- 
+--
 
 function love.conf(t)
     t.modules.joystick = false   -- Enable the joystick module (boolean)
@@ -25,5 +25,5 @@ function love.conf(t)
     t.screen.fsaa = 0           -- The number of FSAA-buffers (number)
     t.screen.width = 800        -- The window width (number)
     t.screen.height = 600       -- The window height (number)
-    t.version = 0               -- The LÖVE version this game was made for (number)
+    t.version = '0.8.0'               -- The LÖVE version this game was made for (number)
 end
